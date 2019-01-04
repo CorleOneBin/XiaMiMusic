@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cinfo">
+
+    <!--查找一个歌单，包括其下面的歌曲-->
+    <select id="selectOne" parameterType="int" resultMap="RM_Cinfo">
+        select c.id cid,
+               c.imgHref cimgHref,
+               c.name cname,
+               c.num cnum,
+               c.descri cdescri,
+               c.tag ctag,
+               m.id mid,
+               m.name mname,
+               m.time mtime,
+               m.songer msonger,
+               m.album malbum,
+               m.mp3 mmp3
+               from tb_cinfo c
+               left outer join cinfo_music on c.id = cinfo_id
+               left outer join tb_music m on music_id = m.id
+               where c.id = #{id}
+    </select>
+    <resultMap id="RM_Cinfo" type="_Cinfo">
+        <id property="id" column="cid"/>
+        <result property="imgHref" column="cimgHref"/>
+        <result property="name" column="cname"/>
+        <result property="num" column="cnum"/>
+        <result property="descri" column="cdescri"/>
+        <result property="tag" column="ctag"/>
+        <collection property="musics" ofType="_Music">
+            <id property="id" column="mid"/>
+            <result property="name" column="mname"/>
+            <result property="time" column="mtime"/>
+            <result property="songer" column="msonger"/>
+            <result property="album" column="malbum"/>
+            <result property="mp3" column="mmp3"/>
+        </collection>
+    </resultMap>
+
+</mapper>

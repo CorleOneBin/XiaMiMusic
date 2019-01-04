@@ -1,0 +1,585 @@
+.my-row {
+    margin-right: 0px;
+    margin-left: -15px;
+}
+
+
+/*顶部导航栏=========================================================================================================*/
+.logo{
+    display: block;
+    margin-right: 40px;
+    height: 30px;
+    width: 108px;
+    cursor: pointer;
+    margin-top: 21px;
+    margin-left: 45px;
+}
+/*让导航栏里面的内容往下移一点*/
+@media (min-width: 768px){
+    .navbar-nav {
+        float: left;
+        margin-top: 10px;
+        margin-left: 40px;
+    }
+}
+/*增加高度*/
+.navbar {
+    min-height: 69px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+/*更改背景颜色*/
+.navbar-default {
+    background-color: #fff;
+}
+/*手机响应式的按钮下移*/
+.navbar-toggle{
+    margin-top: 17px;
+}
+/*修改字体*/
+.navbar-default .navbar-nav>li>a {
+    font-weight: 300;
+    font-size: 16px;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color:red;
+}
+/*active 被选中的标签*/
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    font-weight: bold;
+    color: #000;
+    background-color: white;
+}
+/*搜索框*/
+.navbar-nav .my-btn{
+    background-color: white;
+}
+.navbar-nav .my-search{
+    border: 0;
+    border-bottom: 1px solid #4a4a4a;
+    height: 100%;
+    width: 105px;
+    transition: width .3s;
+    margin-top: 10px;
+    padding-bottom: 7px;
+}
+.navbar-nav .search-bar{
+    margin-left: 100px !important;
+    margin-right: 20px;
+}
+.navbar-nav .login{
+    position: absolute !important;
+    top: 10px;
+    right: 50px;
+}
+
+/*登录面板=========================================================*/
+.modal-dialog{
+    line-height: 0px;
+}
+.passport-movie{
+    display: inline-block;
+    width: 40%;
+    float: left;
+}
+.passport-movie video{
+    box-sizing: inherit;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+}
+
+.passport-content{
+    height: 438px;
+}
+
+
+.passport-content .register{
+    margin-top: 80px;
+    margin-left: 268px;
+}
+.passport-content .register .agreement-title span{
+    font-size: 18px;
+    font-weight: 700;
+}
+.passport-content .register .agreement-title em{
+    font-style: normal;
+    color: #999;
+    font-size: 12px;
+    margin-left: 8px;
+}
+.passport-content .register form{
+    height: 200px;
+    margin-top: 60px;
+}
+.passport-content .register form span{
+    font-size: 12px;
+    color: #999;
+    font-weight: 300;
+}
+
+.passport-content .register form .number input{
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #f7f7f7;
+    border: none;
+    margin-top: 20px;
+}
+.passport-content .register form .security{
+    margin-top: 30px;
+    position: relative;
+}
+
+.passport-content .register form .security .btn{
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #f7f7f7;
+    border: none;
+    margin-top: 20px;
+}
+.passport-content .register form .sendCode{
+    height: 30px;
+    background-color: #ff410f;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    right:38px;
+    top: 20px;
+}
+.passport-content .register .next{
+    width:280px;
+    height: 48px;
+    background-color: #ff410f;
+    border-radius: 24px;
+    font-size: 16px;
+    color: white;
+}
+
+.passport-content .register1{
+    margin-top: 80px;
+    margin-left: 268px;
+}
+.passport-content .register1 .agreement-title span{
+    font-size: 18px;
+    font-weight: 700;
+}
+.passport-content .register1 .agreement-title em{
+    font-style: normal;
+    color: #999;
+    font-size: 12px;
+    margin-left: 8px;
+}
+.passport-content .register1 form{
+    height: 200px;
+    margin-top: 60px;
+}
+.passport-content .register1 form span{
+    font-size: 12px;
+    color: #999;
+    font-weight: 300;
+}
+
+.passport-content .register1 form .number input{
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #f7f7f7;
+    border: none;
+    margin-top: 20px;
+}
+.passport-content .register1 form .security{
+    margin-top: 30px;
+    position: relative;
+}
+
+.passport-content .register1 form .security .btn{
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #f7f7f7;
+    border: none;
+    margin-top: 20px;
+}
+.passport-content .register1 form .sendCode{
+    height: 30px;
+    background-color: #ff410f;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    right:38px;
+    top: 20px;
+}
+.passport-content .register1 .next{
+    width:280px;
+    height: 48px;
+    background-color: #ff410f;
+    border-radius: 24px;
+    font-size: 16px;
+    color: white;
+    margin-top: 60px;
+}
+
+.passport-content .login{
+    margin-top: 80px;
+    margin-left: 268px;
+}
+.passport-content .login .agreement-title span{
+    font-size: 18px;
+    font-weight: 700;
+}
+.passport-content .login .agreement-title em{
+    font-style: normal;
+    color: #999;
+    font-size: 12px;
+    margin-left: 8px;
+}
+.passport-content .login form{
+    height: 200px;
+    margin-top: 60px;
+}
+.passport-content .login form span{
+    font-size: 12px;
+    color: #999;
+    font-weight: 300;
+}
+
+.passport-content .login form .number input{
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #f7f7f7;
+    border: none;
+    margin-top: 20px;
+}
+.passport-content .login form .security{
+    margin-top: 30px;
+    position: relative;
+}
+
+.passport-content .login form .security .btn{
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #f7f7f7;
+    border: none;
+    margin-top: 20px;
+}
+.passport-content .login form .sendCode{
+    height: 30px;
+    background-color: #ff410f;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    right:38px;
+    top: 20px;
+}
+.passport-content .login .next{
+    width:280px;
+    height: 48px;
+    background-color: #ff410f;
+    border-radius: 24px;
+    font-size: 16px;
+    color: white;
+    margin-top: 60px;
+}
+
+
+/*固定在下面的播放器==================================================================================*/
+.play-bar{
+    height: 72px;
+    background-color: #fff;
+    position: fixed;
+}
+.my-progress{
+    height: 3px;
+    margin-bottom: 0px;
+    z-index: 3;
+}
+.my-progress-bar{
+    background: linear-gradient(90deg,transparent,#ff410f)
+}
+
+.play-bar .handle{
+    width: 75px;
+    height: 20px;
+    background-color: #000;
+    position: absolute;
+    color: #fff;
+    bottom: 61px;
+    opacity: 0.7;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    padding-top: 2px;
+    padding-left: 1px;
+    z-index: 9;
+}
+.music{
+    width: 20%;
+    height: 99%;
+    margin-left: 10%;
+    display: flex;
+    float: left;
+}
+
+.music img{
+    width: 78px;
+    height: 100%;
+    transition: opacity 1s;
+    margin-top: 1px;
+}
+
+.music .info{
+    color: #4a4a4a;
+    font-size: 14px;
+    line-height: 0px;
+    font-weight: 300;
+    margin-top: 13px;
+    margin-left: 10px;
+    width: 30%;
+}
+
+.music .info span{
+    width: 100%;
+    float: left;
+    height: 23px;
+    overflow: hidden;
+    line-height: 20px;
+}
+.music .info .singer{
+    font-size: 12px;
+}
+.music .like{
+    margin-top: 26px;
+    margin-left: 10%;
+}
+/*控制暂停播放和上曲下曲的*/
+.main-control{
+    float: left;
+    height: 100%;
+    width: 200px;
+    padding-top: 25px;
+    margin-left: 17%;
+}
+.main-control .prev{
+    width: 26px;
+    float: left;
+}
+.main-control .play-btn{
+    width: 43px;
+    float: left;
+    margin-top: -10px;
+}
+.main-control .play-btn a{
+    color: #ff410f;
+}
+.main-control .next{
+    width: 20px;
+    float: left;
+    margin-left: 10px;
+}
+/*调节音量，显示歌词，歌曲列表的*/
+.tunings{
+    float: left;
+    width: 25%;
+    margin-top: 30px;
+    margin-left: 12%;
+}
+.tunings .volume-control{
+    float: left;
+    height: 100%;
+    width: 122px;
+    position: relative;
+}
+.tunings .volume-control .volume-progress{
+    float: left;
+    height: 3px;
+    width: 100px;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+.tunings .volume-control .volume-handle{
+    width: 6px;
+    height: 6px;
+    display: block;
+    background-color: #ff410f;
+    border-radius: 4px;
+    cursor: pointer;
+    left: 120px;
+    bottom: 19px;
+    position: absolute;
+
+}
+.tunings .volume-control .volume-bar{
+    background-color: #ff410f !important;
+}
+/*中间部分==================================================================================*/
+.leftbar-inner{
+    margin-top: 126px;
+    margin-left: 43px;
+    text-align: center;
+    width: 300px;
+}
+.leftbar-inner .leftbar-content{
+    text-align: center;
+}
+.leftbar-inner .leftbar-content img{
+    width: 90px;
+    height: 90px;
+}
+.leftbar-content .name{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    max-width: 205px;
+    margin-left: 45px;
+}
+.leftbar-content .signature{
+    text-align: left;
+    margin-top: 50px;
+    padding-left: 64px;
+    font-size: 14px;
+    font-weight: 300;
+}
+.leftbar-content .description{
+    width: 200px;
+    margin-left: 64px;
+    text-align: left;
+    color: #999;
+    font-weight: 300;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.leftbar-content .info-count{
+    margin-left: 48px;
+    margin-top: 22px;
+}
+.leftbar-content .info-count .item{
+    width: 76px;
+    height: 34px;
+    float: left;
+}
+.leftbar-content .info-count .item .item-count{
+    font-size: 16px;
+    font-weight: 700;
+}
+.leftbar-content .info-count .item .item-name{
+    color: #999;
+    font-weight: 300;
+    cursor: pointer;
+    font-size: 14px;
+}
+.rightbar-content{
+    padding-top: 100px;
+}
+.rightbar-content .count-list{
+    float: left;
+    background-color: #f7f7f7;
+}
+.rightbar-content .count-list .count-item{
+    width: 306px;
+    height: 128px;
+    float: left;
+    padding-left: 10px;
+    text-align: center;
+}
+.rightbar-content .count-list .item-border{ /*增加线*/
+    border-right: 1px solid #e6e3f7;
+    border-left: 1px solid #e6e3f7;
+}
+.rightbar-content .count-list .count-wrap{
+    margin-top: 30px;
+    float: left;
+    margin-left: 75px;
+    cursor: pointer;
+}
+.rightbar-content .count-list .count-item .count{
+    font-size: 24px;
+    font-weight: 700;
+}
+.rightbar-content .count-list .count-item .name{
+    font-size: 15px;
+    font-weight: 300;
+}
+.rightbar-content .count-list .count-item i{
+    float: left;
+    margin-top: 13px;
+    padding-left: 10px;
+}
+.rightbar-content .count-list .count-item .content{
+    width: 100px;
+    float: left;
+}
+/*创建歌单部分*/
+.collect-list{
+    width: 950px;
+    float: left;
+    margin-top: 45px;
+}
+
+.collect-list .block-title h2{
+    width: 150px;
+    float: left;
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+.collect-list .external{
+    float: right;
+    margin-right: 20%;
+}
+.collect-list .external a{
+    height: 40px;
+    width: 105px;
+    background-color: #ff410f;
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 21px;
+}
+.collect-list .external a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+.collect-list .adaptive-list{
+    margin-top: 40px;
+}
+.collect-list .adaptive-list .collect-item{
+    width: 189px;
+    float: left;
+    margin-top: 15px;
+    position: relative;
+}
+.collect-list .adaptive-list .collect-item img{
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+.collect-list .adaptive-list .collect-item i{
+    color: red;
+    position: absolute;
+    top: 58px;
+    left: 57px;
+}
+.collect-list .adaptive-list .collect-item .name{
+    overflow: hidden;
+    font-weight: 700;
+    line-height: 18px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.collect-list .adaptive-list .collect-item .name a:hover{
+    text-decoration: none;
+}
