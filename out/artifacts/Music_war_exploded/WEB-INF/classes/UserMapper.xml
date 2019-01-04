@@ -4,4 +4,42 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
 
+    <!--根据电话号码查询一个用户-->
+    <select id="selectOneByNumber" resultMap="RM_User">
+        select u.phone_number uphone_number,
+               u.password upassword,
+              u.nick_name unick_name,
+              u.desciption udesciption,
+              c.id cid,
+              c.imgHref cimgHref,
+              c.name cname,
+              c.num cnum,
+              c.descri cdescri,
+              c.tag ctag
+              from tb_user u
+              left outer join user_cinfo uc on u.phone_number = uc.phone_number
+              left outer join tb_cinfo c on uc.cinfo_id = c.id
+              where u.phone_number = #{number}
+    </select>
+    <resultMap id="RM_User" type="_User">
+        <id property="phoneNumber" column="uphone_number"/>
+        <result property="password" column="upassword"/>
+        <result property="nickName" column="unick_name"/>
+        <result property="description" column="udesciption"/>
+        <collection property="cinfos" ofType="_Cinfo">
+            <id property="id" column="cid"/>
+            <result property="name" column="cname"/>
+            <result property="imgHref" column="cimgHref"/>
+            <result property="tag" column="ctag"/>
+            <result property="num" column="cnum"/>
+            <result property="descri" column="cdescri"/>
+        </collection>
+    </resultMap>
+
+
+    <insert id="insert">
+        insert into tb_user (phone_number, password, nick_name, desciption) values (#{phoneNumber},#{password},#{nickName},#{description})
+    </insert>
+
+
 </mapper>

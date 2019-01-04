@@ -12,6 +12,7 @@ import java.util.List;
 @Repository("musicDao")
 public class MusicDao extends AbstractDao implements BaseDao<Music> {
 
+
     public void insert(Music music) {
 
     }

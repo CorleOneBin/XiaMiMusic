@@ -13,7 +13,7 @@ import java.util.List;
 public class UserDao extends AbstractDao implements BaseDao<User> {
 
     public void insert(User user) {
-
+        getSqlSession().insert("user.insert",user);
     }
 
     public void update(User user) {
@@ -34,6 +34,10 @@ public class UserDao extends AbstractDao implements BaseDao<User> {
 
     public Integer selectCount() {
         return null;
+    }
+
+    public User selectOneByNumber(String number){
+        return getSqlSession().selectOne("user.selectOneByNumber",number);
     }
 
 }

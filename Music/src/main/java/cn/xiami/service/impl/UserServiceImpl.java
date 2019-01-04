@@ -31,6 +31,35 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
      UserDao dao;
 
 
+    /**
+     * 判断号码是否可以被注册
+     */
+    public boolean judgeNumber(String number) {
+        User user = null;
+        user = dao.selectOneByNumber(number);
+        if(user!=null){
+            //存在不可以被注册
+            return false;
+        }
+        return true;
+    }
 
+    /**
+     * 查询一个User对象
+     */
+    public User selectOneByNumber(String number){
+        return dao.selectOneByNumber(number);
+    }
 
+    /**
+     * 判断这个账号和密码是否能登录
+     */
+    public boolean judgeLogin(String number, String password) {
+        User user = dao.selectOneByNumber(number);
+        if(user.getPassword().equals(password)){
+            //可以登录
+            return true;
+        }
+        return false;
+    }
 }

@@ -15,7 +15,7 @@ public class User {
     //用户自身的描述信息
     private String description;
     //用户创建的歌单
-    List<Category> categories;
+    List<Cinfo> cinfos;
 
     public User() {
 
@@ -53,11 +53,11 @@ public class User {
         this.description = description;
     }
 
-    public List<Category> getCategories() {
-        return categories;
+    public List<Cinfo> getCinfos() {
+        return cinfos;
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
+    public void setCinfos(List<Cinfo> cinfos) {
+        this.cinfos = cinfos;
     }
 }

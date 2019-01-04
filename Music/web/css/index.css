@@ -142,7 +142,8 @@
 }
 .passport-content .register form .sendCode{
     height: 30px;
-    background-color: #ff410f;
+    /*background-color: #ff410f;*/
+    background-color: #656565;
     color: white;
     border-radius: 4px;
     cursor: pointer;
@@ -154,7 +155,7 @@
 .passport-content .register .next{
     width:280px;
     height: 48px;
-    background-color: #ff410f;
+    background-color: #656565;
     border-radius: 24px;
     font-size: 16px;
     color: white;
@@ -219,7 +220,7 @@
 .passport-content .register1 .next{
     width:280px;
     height: 48px;
-    background-color: #ff410f;
+    background-color: #656565;
     border-radius: 24px;
     font-size: 16px;
     color: white;
@@ -275,7 +276,8 @@
 }
 .passport-content .login form .sendCode{
     height: 30px;
-    background-color: #ff410f;
+    /*background-color: #ff410f;*/
+    background-color: #656565;
     color: white;
     border-radius: 4px;
     cursor: pointer;
@@ -287,14 +289,12 @@
 .passport-content .login .next{
     width:280px;
     height: 48px;
-    background-color: #ff410f;
+    background-color: #656565;
     border-radius: 24px;
     font-size: 16px;
     color: white;
     margin-top: 60px;
 }
-
-    /*轮播图=======================================================================================================*/
 
 
 /*面板===========================================================*/

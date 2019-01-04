@@ -8,6 +8,23 @@ function timeFormat(number) {
     return minute + ":" + second;
 }
 
+/**
+ *
+ * 获取项目的根路径，相当于 <c:url value="">
+ */
+function getRootPath() {
+    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+    var curWwwPath = window.document.location.href;
+    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+    var pathName = window.document.location.pathname;
+    var pos = curWwwPath.indexOf(pathName);
+    //获取主机地址，如： http://localhost:8083
+    var localhostPaht = curWwwPath.substring(0, pos);
+    //获取带"/"的项目名，如：/uimcardprj
+    var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+    return (localhostPaht + projectName);
+}
+
 window.onload=function(){
 
     /*登录面板==================================*/
@@ -27,6 +44,7 @@ window.onload=function(){
         $("#security-code").val("");
         $("#regispassword").val("");
         $("#repassword").val("");
+        $("#usernumberMsg").text("");
     });
     /*从登录到注册*/
     $("#toregister").click(function(){
@@ -42,13 +60,13 @@ window.onload=function(){
         $("#usernumber").val("");
         $("#security-code").val("");
     });
-    /*填完手机号码，验证码点击下一步*/
+   /* /!*填完手机号码，验证码点击下一步*!/
     $("#next").click(function(){
         $("#register").hide();
         $("#usernumber").val("");
         $("#security-code").val("");
         $("#register1").show();
-    });
+    });*/
     /*返回上一步*/
     $("#backtoLastRegis").click(function(){
         $("#register").show();
@@ -57,6 +75,114 @@ window.onload=function(){
         $("#repassword").val("");
     });
 
+    /*登录注册正则与ajax判断========================================*/
+    //注册判断
+    $("#usernumber").blur(function(){
+       var usernumber = $("#usernumber").val();
+       if(!(/^[1][2,3,4,5,6,7,8,9][0-9]{9}$/.test(usernumber))){
+           $("#usernumberMsg").text("请填写正确的手机号码")
+           $("#usernumberMsg").css("color","red");
+           $(".sendCode").css("background-color","#656565");
+       }else{
+           $.get(getRootPath()+"/user/judgeNumber",{number:usernumber},function (data) {
+               if("false" == data){
+                   $("#usernumberMsg").text("该手机号已被注册")
+                   $("#usernumberMsg").css("color","red");
+                   $(".sendCode").css("background-color","#656565");
+                   return;
+               }
+           });
+           $("#usernumberMsg").text("手机号码可以被注册")
+           $("#usernumberMsg").css("color","green");
+           $(".sendCode").css("background-color","#ff410f");   /*判断成功后，让发送验证码按钮显示为红色*/
+       }
+    });
+
+    /*发送验证码*/
+    $(".sendCode").click(function(){
+        var usernumber = $("#usernumber").val();
+        var backColor = $(".sendCode").css("background-color")
+        if(backColor=="rgb(255, 65, 15)"){
+            $.get(getRootPath()+"/user/sendCode",{number:usernumber},function(data){
+
+            })
+        }
+    });
+    /*使下一步可以点击*/
+    $("#security-code").blur(function(){
+        var usernumber = $("#usernumber").val();
+        var code = $("#security-code").val();
+        if(usernumber.length != 0 && code.length!=0){
+            $("#next").css("background-color","#ff410f");
+        }else{
+            $("#next").css("background-color","#656565");
+        }
+    });
+
+    /*点击下一步*/
+    $("#next").click(function(){
+        var usernumber = $("#usernumber").val();
+        var code = $("#security-code").val();
+        $.get(getRootPath()+"/user/registerNext",{number:usernumber,code:code},function(data){
+                if("false"==data){
+                    alert("验证码错误");
+                }else{
+                    $("#register").hide();
+                    $("#register1").show();
+                    $("#repassword").next().text("");
+                    $("#regispassword").next().text("");
+                }
+        });
+    });
+
+    /*验证注册密码是否正确*/
+    $("#regispassword").blur(function(){
+       var password = $("#regispassword").val();
+       if(password.length<6 || password.length > 12){
+           $("#regispassword").next().text("请输入6-12位的密码");
+           $("#regispassword").next().css("color","red");
+       }else{
+           $("#regispassword").next().text("");
+       }
+    });
+    /*验证重复密码*/
+    $("#repassword").blur(function(){
+        var password = $("#regispassword").val();
+        var repassword = $("#repassword").val();
+        if(password != repassword){
+            $("#repassword").next().text("两次密码不一致");
+            $("#repassword").next().css("color","red");
+        }else{
+            $("#repassword").next().text("");
+            $(".register1 .next").css("background-color","#ff410f");
+        }
+    });
+
+
+    /*登录验证，是否可以点击登录按钮*/
+    $("#password").blur(function(){
+        var username = $("#username").val();
+        var password = $("#password").val();
+        if(username.length >0 && password.length >0){
+            $(".login .next").css("background-color","#ff410f");
+        }
+    });
+
+    /*登录*/
+    $("#loginBtn").click(function () {
+        var backColor=$("#loginBtn").css("background-color");
+        var username = $("#username").val();
+        var password = $("#password").val();
+        if(backColor == "rgb(255, 65, 15)"){
+            $.get(getRootPath()+"/user/login",{username:username,password:password},function(data){
+                    if("true" == data){
+                        window.location.reload();
+                    }else{
+                        alert("账号或密码错误");
+                    }
+            });
+        }
+    });
 
     var audio = document.getElementById("audio-music");
     /*暂停与播放*/
