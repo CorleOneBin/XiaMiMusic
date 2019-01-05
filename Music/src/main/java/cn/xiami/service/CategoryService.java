@@ -12,4 +12,7 @@ public interface CategoryService extends BaseService<Category>{
     //查询特色分类或者热门分类
     List<Category> selectCate(Integer kind);
 
+    /*查出所有分类的id,kind,和name*/
+    List<Category> selectAllCate();
+
 }

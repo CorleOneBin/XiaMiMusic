@@ -20,6 +20,10 @@ public class CategoryController {
     @Resource(name = "categoryService")
     CategoryService cs;
 
+    /**
+     * 查出所有的category标签，和其中一个category标签下的cinfo
+     * 跳转进入cateList.jsp
+     */
     @RequestMapping(value = "/category/toCateList")
     public String toCateList(Model model, @RequestParam("cateId") int cateId){
 
@@ -32,6 +36,17 @@ public class CategoryController {
         model.addAttribute("category",category);
         return "cateList";
 
+    }
+
+    /**
+     * 查询所有的category标签
+     * 跳转进入createList.jsp
+     */
+    @RequestMapping(value = "/category/toCreateCinfo")
+    public String toCreateList(Model model){
+        List<Category> list = cs.selectAllCate();
+        model.addAttribute("cateList",list);
+        return "createList";
     }
 
 

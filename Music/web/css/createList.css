@@ -449,6 +449,7 @@
     text-align: center;
     padding-top: 82px;
     cursor: pointer;
+    background-size:cover;
 }
 .content-wrapper .edit-collect-view .edit-collect .collect-main{
     float: left;

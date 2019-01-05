@@ -40,4 +40,25 @@
         </collection>
     </resultMap>
 
+    <select id="selectMaxId">
+        select max(id) from tb_cinfo;
+    </select>
+
+    <!--插入关联-->
+    <insert id="insertUsertoCinfo">
+        insert into user_cinfo (phone_number,cinfo_id)
+        values (#{phoneNumber},#{cinfoId})
+    </insert>
+
+    <!--插入关联-->
+    <insert id="insertCatetoCinfo">
+        insert into cate_cinfo (cate_id, cinfo_id)
+        values (#{cateId},#{cinfoId})
+    </insert>
+
+    <insert id="insert">
+        insert into tb_cinfo (id,  imgHref, name, num, descri, tag)
+    </insert>
+
+
 </mapper>

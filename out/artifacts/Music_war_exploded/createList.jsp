@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -11,9 +12,9 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/createList.css" rel="stylesheet" />
-    <script src="js/createList.js" type="text/javascript"></script>
+    <link href="<c:url value='/css/reset.css'/>" rel="stylesheet" />
+    <link href="<c:url value='/css/createList.css'/> " rel="stylesheet" />
+    <script src="<c:url value='/js/createList.js'/> " type="text/javascript"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -30,13 +31,20 @@
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="index.jsp">发现</a></li>
-                <li><a href="myMusic.jsp">我的音乐</a></li>
+                <li><a href="<c:url value='/index.jsp'/> ">发现</a></li>
+                <li><a href="<c:url value='/myMusic.jsp' /> ">我的音乐</a></li>
                 <li><a href="#">音乐人</a></li>
                 <li><a href="#">客户端下载</a></li>
                 <li><a href="#">会员中心</a></li>
                 <li><a href="#">回旧版</a></li>
-                <li class="navbar-right login" data-toggle="modal" data-target="#login-panel"><a href="#" id="toLoginPanel">登录/注册</a></li>
+                <li class="navbar-right login" data-toggle="modal" data-target="#login-panel">
+                    <c:if test="${not empty sessionScope.user}">
+                        <a href="#" id="toUserPanel">${sessionScope.user.phoneNumber}</a>
+                    </c:if>
+                    <c:if test="${empty sessionScope.user}">
+                        <a href="#" id="toLoginPanel">登录/注册</a>
+                    </c:if>
+                </li>
                 <li class="navbar-right">
                     <form class="navbar-form search-bar" role="search">
                         <div class="form-group">
@@ -45,7 +53,6 @@
                         <button type="submit" class="btn my-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </li>
-
             </ul>
         </div>
 
@@ -56,11 +63,13 @@
         <div class="title">创建歌单</div>
         <div class="edit-collect">
             <div class="collect-side">
-                <div class="cover">
+                <div class="cover" style="background-size: 100% 100%;">
                     <i class="fa fa-camera-retro fa-2x"></i>
                     <div>添加封面</div>
+                    <input type="hidden" id="localUrl" value=""><%--存放上传封面的本地路径--%>
                 </div>
-                <div style="font-weight: 300; font-size: 14px; margin-top: 15px">图片最佳尺寸 1200*1200</div>
+                    <input type="file" style="display: none;" id="choose-file">
+                    <div style="font-weight: 300; font-size: 14px; margin-top: 15px">图片最佳尺寸 1200*1200</div>
             </div>
             <div class="collect-main">
                 <div class="edit-collect-title">
@@ -70,72 +79,15 @@
                 <div class="edit-collect-tag">
                     <span style="font-size: 16px; font-weight: 500;">标签</span><span style="font-size: 14px; color: #999; font-weight: 300; margin-left: 10px;">最多可选择3个标签</span><br>
                     <div class="tags">
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">纯音乐</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">小语种</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">纯音乐</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">小语种</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">纯音乐</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">小语种</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
-                        <div class="tag-item">经典</div>
+                        <c:forEach items="${cateList}" var="cate">
+                            <input type="hidden" value="${cate.id}">
+                            <div class="tag-item">${cate.name}</div>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="edit-collect-desciption">
                     <span style="font-size: 16px; font-weight: 500;">简介</span><br/>
-                    <textarea class="description" placeholder="我来说两句..." style="margin-top: 10px;"></textarea>
-
+                    <textarea class="description" name="description" placeholder="我来说两句..." style="margin-top: 10px;"></textarea>
                 </div>
                 <div class="operation">
                     <div class="cancel">取消</div>
@@ -144,7 +96,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> <%--中间部分--%>
 <div class="play-bar navbar-fixed-bottom">  <!--播放器部分-->
     <div class="progress my-progress">
         <div class="progress-bar my-progress-bar" id="play-progress-bar" role="progressbar" aria-valuenow="60"
@@ -158,7 +110,7 @@
         <span class="total-time" id="total-time">00:00</span>
     </div> <!--进度条拖拽块-->
     <div class="music">
-        <img src="image/test.jpg">
+        <img src="<c:url value='/image/test.jpg'/> ">
         <div class="info">
             <span class="content">男孩</span><br>
             <span class="singer">梁博</span>
@@ -199,7 +151,7 @@
                 &times;
             </button>
             <div class="passport-movie"> <!--视频-->
-                <video loop autoplay src="image/a29ccbee1e9a1624832ef6d32c80225b.quicktime" id="login-video"></video>
+                <video loop autoplay src="<c:url value='/image/a29ccbee1e9a1624832ef6d32c80225b.quicktime'/> " id="login-video"></video>
             </div>
             <div class="passport-content"> <!--右边的内容-->
                 <div class="login" id="login">

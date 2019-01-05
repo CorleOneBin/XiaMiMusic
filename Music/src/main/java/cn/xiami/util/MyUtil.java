@@ -2,9 +2,10 @@ package cn.xiami.util;
 
 import com.cloopen.rest.sdk.CCPRestSmsSDK;
 
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Set;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.*;
 
 public class MyUtil {
 
@@ -43,6 +44,60 @@ public class MyUtil {
         Random random = new Random();
         int result = random.nextInt(8999)+1000;
         return result;
+    }
+
+    /**
+     * 上传cinfo的封面
+     *
+     * 参数为图片的本地路径 ， 目标路径  ， 用户的电话号码(用于标识)
+     *
+     * 返回存储的路径
+     */
+    public static String uploadCinfoImg(String localUrl,String srcPath,String phoneNumber){
+        FileInputStream fis=null;
+        FileOutputStream fos=null;
+        try {
+            //取出文件名
+            String fileName = localUrl.substring(localUrl.lastIndexOf('\\') + 1);
+            fileName = phoneNumber+"_"+nowDate()+"_"+fileName;
+            //拼接成目标路径
+            srcPath = srcPath+"\\"+fileName;
+            fis = new FileInputStream(localUrl);
+            fos = new FileOutputStream(srcPath);
+            byte[] bytes = new byte[1024];
+            int len = 0;
+            while( (len=fis.read(bytes))!=-1 ){
+                fos.write(bytes,0,len);
+            }
+            return "\\image\\upload\\"+fileName;
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                fis.close();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * 返回时间
+     */
+    public static String nowDate(){
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int y =  calendar.get(Calendar.YEAR);
+        int m =  calendar.get(Calendar.MONTH)+1;
+        int d =  calendar.get(Calendar.DAY_OF_MONTH);
+        int H =  calendar.get(Calendar.HOUR_OF_DAY);
+        int M =  calendar.get(Calendar.MINUTE);
+        int s =  calendar.get(Calendar.SECOND);
+        return y+"_"+m+"_"+d+"_"+H+"_"+M+"_"+s;
     }
 
 }

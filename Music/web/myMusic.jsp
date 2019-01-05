@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -11,9 +12,9 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/myMusic.css" rel="stylesheet" />
-    <script src="js/myMusic.js" type="text/javascript"></script>
+    <link href="<c:url value='/css/reset.css' />" rel="stylesheet" />
+    <link href="<c:url value='/css/myMusic.css'/> " rel="stylesheet" />
+    <script src="<c:url value='/js/myMusic.js' />" type="text/javascript"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -36,7 +37,14 @@
                 <li><a href="#">客户端下载</a></li>
                 <li><a href="#">会员中心</a></li>
                 <li><a href="#">回旧版</a></li>
-                <li class="navbar-right login" data-toggle="modal" data-target="#login-panel"><a href="#" id="toLoginPanel">登录/注册</a></li>
+                <li class="navbar-right login" data-toggle="modal" data-target="#login-panel">
+                    <c:if test="${not empty sessionScope.user}">
+                        <a href="#" id="toUserPanel">${sessionScope.user.phoneNumber}</a>
+                    </c:if>
+                    <c:if test="${empty sessionScope.user}">
+                        <a href="#" id="toLoginPanel">登录/注册</a>
+                    </c:if>
+                </li>
                 <li class="navbar-right">
                     <form class="navbar-form search-bar" role="search">
                         <div class="form-group">
@@ -56,8 +64,8 @@
         <div class="leftbar-inner">
             <div class="leftbar-content">
                 <img src="image/test.jpg" class="img-circle">
-                <div class="name">昵称</div>
-                <div class="signature">我还没想好要写什么</div>
+                <div class="name">${sessionScope.user.nickName}</div>
+                <div class="signature">${sessionScope.user.description}</div>
                 <div class="description">来自宇宙深处的，2018年8月加入</div>
                 <div class="info-count">
                     <div class="item">
@@ -112,24 +120,21 @@
                     <div class="block-title">
                         <h2>创建的歌单</h2>
                         <div class="external">
-                            <a href="createList.html">新建歌单</a>
+                            <a href="<c:url value='/category/toCreateCinfo' /> ">新建歌单</a>
                         </div>
                     </div>
                     <div class="adaptive-list">
+                        <c:forEach items="${sessionScope.user.cinfos}" var="cinfos">
+                            <div class="collect-item">
+                                <img src="${cinfos.imgHref}">
+                                <i class="fa fa-play-circle fa-3x" style="display: none;"></i>
+                                <div class="name"><a href="musicList.html">${cinfos.name}(${cinfos.num})</a></div>
+                            </div>
+                        </c:forEach>
                         <div class="collect-item">
                             <img src="image/test.jpg">
                             <i class="fa fa-play-circle fa-3x" style="display: none;"></i>
                             <div class="name"><a href="musicList.html">english(1)</a></div>
-                        </div>
-                        <div class="collect-item">
-                            <img src="image/test.jpg">
-                            <i class="fa fa-play-circle fa-3x" style="display: none;"></i>
-                            <div class="name"><a href="musicList.html">english(10)</a></div>
-                        </div>
-                        <div class="collect-item">
-                            <img src="image/test.jpg">
-                            <i class="fa fa-play-circle fa-3x" style="display: none;"></i>
-                            <div class="name"><a href="musicList.html">english(20)</a></div>
                         </div>
                     </div>
                 </div>

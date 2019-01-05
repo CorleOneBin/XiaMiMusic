@@ -2,7 +2,6 @@ package cn.xiami.web.controller;
 
 import cn.xiami.module.User;
 import cn.xiami.service.UserService;
-import cn.xiami.util.MyUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -124,6 +123,7 @@ public class UserController {
         }
 
     }
+
 
 
 

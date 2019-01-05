@@ -39,7 +39,7 @@
                 <li><a href="#">回旧版</a></li>
                 <li class="navbar-right login" data-toggle="modal" data-target="#login-panel">
                     <c:if test="${not empty sessionScope.user}">
-                        <a href="#" id="toLoginPanel">${sessionScope.user.phoneNumber}</a>
+                        <a href="#" id="toUserPanel">${sessionScope.user.phoneNumber}</a>
                     </c:if>
                     <c:if test="${empty sessionScope.user}">
                         <a href="#" id="toLoginPanel">登录/注册</a>

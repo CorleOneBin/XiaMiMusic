@@ -8,6 +8,24 @@ function timeFormat(number) {
     return minute + ":" + second;
 }
 
+
+/**
+ *
+ * 获取项目的根路径，相当于 <c:url value="">
+ */
+function getRootPath() {
+    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+    var curWwwPath = window.document.location.href;
+    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+    var pathName = window.document.location.pathname;
+    var pos = curWwwPath.indexOf(pathName);
+    //获取主机地址，如： http://localhost:8083
+    var localhostPaht = curWwwPath.substring(0, pos);
+    //获取带"/"的项目名，如：/uimcardprj
+    var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+    return (localhostPaht + projectName);
+}
+
 window.onload=function(){
 
     /*登录面板==================================*/
@@ -164,9 +182,72 @@ $(document).ready(function(){
         }
     });
 
+    /**
+     * 取消操作
+     */
     $(".operation .cancel").click(function(){
-       window.location.href="myMusic.html";
+       window.location.href=getRootPath()+"/myMusic.jsp";
     });
+
+    /**
+     * 保存操作
+     */
+    $(".operation .save").click(function(){
+        //属于哪几个category
+        var selected = document.getElementsByClassName("selected")
+        var cateName = new Array();
+        //category的id
+        var cateId = new Array();
+        //用户名
+        var phoneNumber =  $("#toUserPanel").text()
+        //歌单名字
+        var cinfoName = $(".input-title").val();
+        //描述
+        var descr = $(".description").val();
+        //需要上传的图片的本地路径
+        var backUrl =  $("#localUrl").val();
+        for( var i = 0; i < selected.length; i++){
+            cateName[i] = selected[i].innerHTML
+            var input =  selected[i].nextElementSibling;
+            cateId[i] = String(input.value);
+        }
+        $.ajax({
+            type: "POST",
+            url:  "/cinfo/createCinfo",
+            cache: false,
+            traditional: "true",
+            async:false,
+            data:{"cateName":cateName,"cateId":cateId,"cinfoName":cinfoName,"phoneNumber":phoneNumber,"descr":descr,"backUrl":backUrl},
+            dataType: "json",
+            success: function (ret) {
+
+            },
+            error: function (ret) {
+
+            }
+        });
+    });
+
+    /**
+     * 上传图片并预览
+     */
+    $(".cover").click(function(){
+       $("#choose-file").click();
+    });
+
+    $('#choose-file').change(function() {
+        var file = $('#choose-file').get(0).files[0];
+        var fileUrl = $('#choose-file')[0].value;
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function (e) {
+            console.log(e);
+            $(".cover").css("background","url("+e.target.result+") no-repeat");
+            $(".cover").css("background-size","100% 100%");
+            $("#localUrl").val(fileUrl);
+        }
+    });
+
 
 
 });

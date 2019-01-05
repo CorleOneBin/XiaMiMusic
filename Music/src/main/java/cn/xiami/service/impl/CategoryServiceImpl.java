@@ -29,8 +29,22 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category> implements Ca
     CategoryDao dao;
 
 
-    /*根据kind查询特色分类或者热门分类*/
+    /**
+     * 根据kind查询特色分类或者热门分类
+     */
     public List<Category> selectCate(Integer kind) {
         return dao.selectCate(kind);
     }
+
+    /**
+     * 查出所有分类标签的id，kind,name
+     */
+    public List<Category> selectAllCate() {
+        List<Category> list = selectCate(1);
+        List<Category> list1 = selectCate(2);
+        list.addAll(list1);
+        return list;
+    }
+
+
 }
