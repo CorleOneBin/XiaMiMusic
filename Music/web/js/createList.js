@@ -208,24 +208,25 @@ $(document).ready(function(){
         var backUrl =  $("#localUrl").val();
         for( var i = 0; i < selected.length; i++){
             cateName[i] = selected[i].innerHTML
-            var input =  selected[i].nextElementSibling;
+            var input =  selected[i].previousElementSibling;
             cateId[i] = String(input.value);
         }
+
+
         $.ajax({
-            type: "POST",
-            url:  "/cinfo/createCinfo",
+            type: "post",
+            url:  getRootPath()+"/cinfo/createCinfo",
             cache: false,
-            traditional: "true",
-            async:false,
-            data:{"cateName":cateName,"cateId":cateId,"cinfoName":cinfoName,"phoneNumber":phoneNumber,"descr":descr,"backUrl":backUrl},
+            traditional:true,
             dataType: "json",
+            data:{cateName:cateName,cateId:cateId,cinfoName:cinfoName,phoneNumber:phoneNumber,descr:descr,backUrl:backUrl},
             success: function (ret) {
-
+                if(ret == true){
+                    window.location.href=getRootPath()+"/user/updateSessionUser"
+                }
             },
-            error: function (ret) {
-
-            }
         });
+
     });
 
     /**

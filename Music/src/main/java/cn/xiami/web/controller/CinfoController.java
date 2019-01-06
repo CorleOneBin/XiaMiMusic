@@ -5,11 +5,17 @@ import cn.xiami.service.CinfoService;
 import cn.xiami.util.MyUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -37,7 +43,7 @@ public class CinfoController {
      * 创建新的歌单
      */
     @RequestMapping(value = "/cinfo/createCinfo")
-    public void createCinfo(HttpServletRequest req){
+    public void  createCinfo(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         //种类名字
         String cateName[] =  req.getParameterValues("cateName");
@@ -79,6 +85,8 @@ public class CinfoController {
 
         //插入对应的cinfo到基本表
         cs.insert(cinfo);
+
+        resp.getWriter().print(true);
 
     }
 

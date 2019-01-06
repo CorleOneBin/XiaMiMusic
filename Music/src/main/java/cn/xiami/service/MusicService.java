@@ -7,4 +7,11 @@ import cn.xiami.module.Music;
  */
 public interface MusicService extends BaseService<Music>{
 
+    /**
+     * 收藏歌曲
+     * 即将cinfoID与musicId插入关联表
+     * 并且要将cinfoNum的消息加一
+     */
+    boolean insertCinfoToMusic(int cinfoId,int musicId);
+
 }

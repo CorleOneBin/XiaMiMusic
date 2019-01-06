@@ -32,19 +32,28 @@
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value='/index.jsp'/> ">发现</a></li>
-                <li><a href="<c:url value='/myMusic.jsp' /> ">我的音乐</a></li>
+                <li><a href="<c:url value='/myMusic.jsp'/> ">我的音乐</a></li>
                 <li><a href="#">音乐人</a></li>
                 <li><a href="#">客户端下载</a></li>
                 <li><a href="#">会员中心</a></li>
                 <li><a href="#">回旧版</a></li>
-                <li class="navbar-right login" data-toggle="modal" data-target="#login-panel">
-                    <c:if test="${not empty sessionScope.user}">
-                        <a href="#" id="toUserPanel">${sessionScope.user.phoneNumber}</a>
-                    </c:if>
-                    <c:if test="${empty sessionScope.user}">
+                <c:if test="${empty sessionScope.user}">
+                    <li class="navbar-right login" data-toggle="modal" data-target="#login-panel">
                         <a href="#" id="toLoginPanel">登录/注册</a>
-                    </c:if>
-                </li>
+                    </li>
+                </c:if>
+                <c:if test="${not empty sessionScope.user}">
+                    <li class="dropdown login">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                ${sessionScope.user.nickName}
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<c:url value='/editUser.jsp'/> ">个人中心</a></li>
+                            <li><a href="<c:url value='/user/logOut'/> " onclick="alert('确定退出吗');">退出</a></li>
+                        </ul>
+                    </li>
+                </c:if>
                 <li class="navbar-right">
                     <form class="navbar-form search-bar" role="search">
                         <div class="form-group">

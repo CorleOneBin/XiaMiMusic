@@ -1,6 +1,7 @@
 package cn.xiami.dao.impl;
 
 import cn.xiami.dao.BaseDao;
+import cn.xiami.module.CinfoToMusic;
 import cn.xiami.module.Music;
 import org.springframework.stereotype.Repository;
 
@@ -35,6 +36,27 @@ public class MusicDao extends AbstractDao implements BaseDao<Music> {
 
     public Integer selectCount() {
         return null;
+    }
+
+    /**
+     * 插入关联表的想关信息
+     */
+    public boolean insertCinfoToMusic(CinfoToMusic cinfoToMusic) {
+        try {
+            getSqlSession().insert("music.insertCinfoToMusic",cinfoToMusic);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * 更新cinfo的num
+     *
+     */
+    public void updateCinfoNum(int cinfoId){
+        getSqlSession().update("cinfo.updateCinfoNum",cinfoId);
     }
 
 }

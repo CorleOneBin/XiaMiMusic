@@ -36,10 +36,15 @@
         </collection>
     </resultMap>
 
-
+    <!--增加用户-->
     <insert id="insert">
         insert into tb_user (phone_number, password, nick_name, desciption) values (#{phoneNumber},#{password},#{nickName},#{description})
     </insert>
 
+
+    <!--更新用户信息-->
+    <update id="update">
+        update tb_user set nick_name = #{nickName},desciption = #{description} where phone_number = #{phoneNumber}
+    </update>
 
 </mapper>

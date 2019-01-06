@@ -40,7 +40,7 @@
         </collection>
     </resultMap>
 
-    <select id="selectMaxId">
+    <select id="selectMaxId" resultType="int">
         select max(id) from tb_cinfo;
     </select>
 
@@ -56,10 +56,15 @@
         values (#{cateId},#{cinfoId})
     </insert>
 
+    <!--插入一个cinfo-->
     <insert id="insert">
         insert into tb_cinfo (id,imgHref, name, num, descri, tag)
         values (#{id},#{imgHref},#{name},#{num},#{descri},#{tag})
     </insert>
 
+    <!--增加cinfo的num-->
+    <update id="updateCinfoNum">
+      update tb_cinfo  set num = num+1 where id = #{cinfoId}
+    </update>
 
 </mapper>

@@ -2,6 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="category">
+<mapper namespace="music">
+
+    <!--收藏歌曲，插入关联表-->
+    <insert id="insertCinfoToMusic">
+        insert into cinfo_music (cinfo_id, music_id) values (#{cinfoId},#{musicId})
+    </insert>
 
 </mapper>

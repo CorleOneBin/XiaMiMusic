@@ -37,14 +37,23 @@
                 <li><a href="#">客户端下载</a></li>
                 <li><a href="#">会员中心</a></li>
                 <li><a href="#">回旧版</a></li>
+                <c:if test="${empty sessionScope.user}">
                 <li class="navbar-right login" data-toggle="modal" data-target="#login-panel">
-                    <c:if test="${not empty sessionScope.user}">
-                        <a href="#" id="toUserPanel">${sessionScope.user.phoneNumber}</a>
-                    </c:if>
-                    <c:if test="${empty sessionScope.user}">
                         <a href="#" id="toLoginPanel">登录/注册</a>
-                    </c:if>
                 </li>
+                </c:if>
+                <c:if test="${not empty sessionScope.user}">
+                <li class="dropdown login">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        ${sessionScope.user.nickName}
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<c:url value='/editUser.jsp'/> ">个人中心</a></li>
+                        <li><a href="<c:url value='/user/logOut'/> " onclick="alert('确定退出吗');">退出</a></li>
+                    </ul>
+                </li>
+                </c:if>
                 <li class="navbar-right">
                     <form class="navbar-form search-bar" role="search">
                         <div class="form-group">
@@ -53,7 +62,6 @@
                         <button type="submit" class="btn my-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </li>
-
             </ul>
         </div>
 
@@ -270,7 +278,7 @@
         <span class="total-time" id="total-time">00:00</span>
     </div> <!--进度条拖拽块-->
     <div class="music">
-        <img src="image/test.jpg">
+        <img src="<c:url value='/image/test.jpg'/>">
         <div class="info">
             <span class="content">男孩</span><br>
             <span class="singer">梁博</span>
@@ -311,7 +319,7 @@
                     &times;
                 </button>
                 <div class="passport-movie"> <!--视频-->
-                    <video loop autoplay src="image/a29ccbee1e9a1624832ef6d32c80225b.quicktime" id="login-video"></video>
+                    <video loop autoplay src="<c:url value='/image/a29ccbee1e9a1624832ef6d32c80225b.quicktime'/>" id="login-video"></video>
                 </div>
                 <div class="passport-content"> <!--右边的内容-->
                     <div class="login" id="login">

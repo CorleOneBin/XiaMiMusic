@@ -72,6 +72,10 @@
     top: 10px;
     right: 50px;
 }
+/*下拉框*/
+.My-dropdown-menu li{
+    width: 100px !important;
+}
 
 /*登录面板=========================================================*/
 .modal-dialog{

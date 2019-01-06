@@ -23,5 +23,12 @@ public class TestCinfoDdao {
 
 
     }
+    @Test
+    public void testSelectId(){
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        CinfoDao cd = (CinfoDao) ac.getBean("cinfoDao");
+        int a = cd.selectId();
+        System.out.println(a);
+    }
 
 }

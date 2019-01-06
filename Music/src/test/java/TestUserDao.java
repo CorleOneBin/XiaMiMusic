@@ -15,4 +15,15 @@ public class TestUserDao {
         System.out.println(user.getPhoneNumber());
     }
 
+    @Test
+    public void testUpdateUser(){
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserDao dao = (UserDao) ac.getBean("userDao");
+        User user = new User();
+        user.setNickName("bin123");
+        user.setDescription("这是一段描述");
+        user.setPhoneNumber("15274464875");
+        dao.update(user);
+    }
+
 }

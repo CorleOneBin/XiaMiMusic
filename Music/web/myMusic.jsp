@@ -31,20 +31,29 @@
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="index.jsp">发现</a></li>
-                <li class="active"><a href="#">我的音乐</a></li>
+                <li><a href="<c:url value='/index.jsp'/>">发现</a></li>
+                <li class="active"><a href="<c:url value='/myMusic.jsp'/> ">我的音乐</a></li>
                 <li><a href="#">音乐人</a></li>
                 <li><a href="#">客户端下载</a></li>
                 <li><a href="#">会员中心</a></li>
                 <li><a href="#">回旧版</a></li>
-                <li class="navbar-right login" data-toggle="modal" data-target="#login-panel">
-                    <c:if test="${not empty sessionScope.user}">
-                        <a href="#" id="toUserPanel">${sessionScope.user.phoneNumber}</a>
-                    </c:if>
-                    <c:if test="${empty sessionScope.user}">
+                <c:if test="${empty sessionScope.user}">
+                    <li class="navbar-right login" data-toggle="modal" data-target="#login-panel">
                         <a href="#" id="toLoginPanel">登录/注册</a>
-                    </c:if>
-                </li>
+                    </li>
+                </c:if>
+                <c:if test="${not empty sessionScope.user}">
+                    <li class="dropdown login">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                ${sessionScope.user.nickName}
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<c:url value='/editUser.jsp'/> ">个人中心</a></li>
+                            <li><a href="<c:url value='/user/logOut'/> " onclick="alert('确定退出吗');">退出</a></li>
+                        </ul>
+                    </li>
+                </c:if>
                 <li class="navbar-right">
                     <form class="navbar-form search-bar" role="search">
                         <div class="form-group">
@@ -53,7 +62,6 @@
                         <button type="submit" class="btn my-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </li>
-
             </ul>
         </div>
 
@@ -126,16 +134,11 @@
                     <div class="adaptive-list">
                         <c:forEach items="${sessionScope.user.cinfos}" var="cinfos">
                             <div class="collect-item">
-                                <img src="${cinfos.imgHref}">
+                                <img src="<c:url value='${cinfos.imgHref}'/> ">
                                 <i class="fa fa-play-circle fa-3x" style="display: none;"></i>
-                                <div class="name"><a href="musicList.html">${cinfos.name}(${cinfos.num})</a></div>
+                                <div class="name"><a href="<c:url value='/cinfo/toMusicList?cinfoId=${cinfos.id}'/>">${cinfos.name}(${cinfos.num})</a></div>
                             </div>
                         </c:forEach>
-                        <div class="collect-item">
-                            <img src="image/test.jpg">
-                            <i class="fa fa-play-circle fa-3x" style="display: none;"></i>
-                            <div class="name"><a href="musicList.html">english(1)</a></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -155,7 +158,7 @@
         <span class="total-time" id="total-time">00:00</span>
     </div> <!--进度条拖拽块-->
     <div class="music">
-        <img src="image/test.jpg">
+        <img src="<c:url value='/image/test.jpg'/>">
         <div class="info">
             <span class="content">男孩</span><br>
             <span class="singer">梁博</span>

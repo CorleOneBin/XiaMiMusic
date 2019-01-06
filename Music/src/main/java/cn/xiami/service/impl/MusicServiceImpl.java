@@ -4,6 +4,7 @@ import cn.xiami.dao.BaseDao;
 import cn.xiami.dao.impl.CategoryDao;
 import cn.xiami.dao.impl.MusicDao;
 import cn.xiami.module.Category;
+import cn.xiami.module.CinfoToMusic;
 import cn.xiami.module.Music;
 import cn.xiami.service.CategoryService;
 import cn.xiami.service.MusicService;
@@ -30,7 +31,19 @@ public class MusicServiceImpl extends BaseServiceImpl<Music> implements MusicSer
     @Resource(name = "musicDao")
      MusicDao dao;
 
-
-
-
+    /**
+     * 收藏歌曲
+     * 即将cinfoID与musicId插入关联表
+     * 并将cinfo的num加一
+     */
+    public boolean insertCinfoToMusic(int cinfoId, int musicId) {
+        CinfoToMusic cinfoToMusic = new CinfoToMusic();
+        cinfoToMusic.setCinfoId(cinfoId);
+        cinfoToMusic.setMusicId(musicId);
+        boolean flag = dao.insertCinfoToMusic(cinfoToMusic);
+        if(flag){
+            dao.updateCinfoNum(cinfoId);
+        }
+        return flag;
+    }
 }

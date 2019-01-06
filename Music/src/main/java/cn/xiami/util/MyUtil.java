@@ -69,7 +69,7 @@ public class MyUtil {
             while( (len=fis.read(bytes))!=-1 ){
                 fos.write(bytes,0,len);
             }
-            return "\\image\\upload\\"+fileName;
+            return "image\\upload\\"+fileName;
         } catch (java.io.IOException e) {
             e.printStackTrace();
         }finally {

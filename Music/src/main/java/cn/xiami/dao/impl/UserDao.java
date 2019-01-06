@@ -17,7 +17,7 @@ public class UserDao extends AbstractDao implements BaseDao<User> {
     }
 
     public void update(User user) {
-
+        getSqlSession().update("user.update",user);
     }
 
     public void delete(Integer id) {
