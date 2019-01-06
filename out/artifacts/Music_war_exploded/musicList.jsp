@@ -31,13 +31,20 @@
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="<c:url value='/index.jsp'/> ">发现</a></li>
-                <li><a href="<c:url value='/myMusic.jsp'/> ">我的音乐</a></li>
+                <li class="active"><a href="#">发现</a></li>
+                <li><a href="<c:url value='/user/updateSessionUser'/> ">我的音乐</a></li>
                 <li><a href="#">音乐人</a></li>
                 <li><a href="#">客户端下载</a></li>
                 <li><a href="#">会员中心</a></li>
                 <li><a href="#">回旧版</a></li>
-                <li class="navbar-right login" data-toggle="modal" data-target="#login-panel"><a href="#" id="toLoginPanel">登录/注册</a></li>
+                <li class="navbar-right login" data-toggle="modal" data-target="#login-panel">
+                    <c:if test="${not empty sessionScope.user}">
+                        <a href="#" id="toUserPanel">${sessionScope.user.phoneNumber}</a>
+                    </c:if>
+                    <c:if test="${empty sessionScope.user}">
+                        <a href="#" id="toLoginPanel">登录/注册</a>
+                    </c:if>
+                </li>
                 <li class="navbar-right">
                     <form class="navbar-form search-bar" role="search">
                         <div class="form-group">
@@ -65,7 +72,7 @@
         <span class="total-time" id="total-time">00:00</span>
     </div> <!--进度条拖拽块-->
     <div class="music">
-        <img src="image/test.jpg">
+        <img src="<c:url value='/image/test.jpg'/>">
         <div class="info">
             <span class="content">男孩</span><br>
             <span class="singer">梁博</span>
@@ -137,15 +144,14 @@
                                 <input type="hidden" class="imgHref" value="${cinfo.imgHref}">
                                 <p class="a-name">${beans.album}</p>
                                 <p class="dowload">
-                                    <a href="${beans.mp3}"><i class="fa fa-download"></i></a> /
+                                    <a href="<c:url value='/music/musicDownload?mp3Url=${beans.mp3}&name=${beans.name}'/>"><i class="fa fa-download"></i></a> /
                                     <span style="cursor: pointer;">收藏</span>
                                 <div class="collect" style="display: none;">
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
+                                <c:forEach items="${sessionScope.user.cinfos}" var="cinfo">
+                                    <div class="cate-item">${cinfo.name}</div>
+                                    <input type="hidden" value="${cinfo.id}">
+                                    <input type="hidden" value="${beans.id}">
+                                </c:forEach>
                                 </div>
                                 </p>
                             </li>
@@ -157,15 +163,14 @@
                                 <p class="s-name">${beans.songer}</p>
                                 <p class="a-name">${beans.album}</p>
                                 <p class="dowload">
-                                    <a href="#"><i class="fa fa-download"></i></a> /
+                                    <a href="<c:url value='/music/musicDownload?mp3Url=${beans.mp3}&name=${beans.name}'/>"><i class="fa fa-download"></i></a> /
                                     <span style="cursor: pointer;">收藏</span>
                                 <div class="collect" style="display: none;">
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
-                                    <div class="cate-item">english</div>
+                                <c:forEach items="${sessionScope.user.cinfos}" var="cinfo">
+                                    <div class="cate-item">${cinfo.name}</div>
+                                    <input type="hidden" value="${cinfo.id}">
+                                    <input type="hidden" value="${beans.id}">
+                                </c:forEach>
                                 </div>
                                 </p>
                             </li>
@@ -187,7 +192,7 @@
                 &times;
             </button>
             <div class="passport-movie"> <!--视频-->
-                <video loop autoplay src="<c:url value='/image/a29ccbee1e9a1624832ef6d32c80225b.quicktime'/> " id="login-video"></video>
+                <video loop autoplay src="<c:url value='/image/a29ccbee1e9a1624832ef6d32c80225b.quicktime'/>" id="login-video"></video>
             </div>
             <div class="passport-content"> <!--右边的内容-->
                 <div class="login" id="login">
@@ -203,7 +208,7 @@
                             <span style="margin-top: 30px;">密码</span><br/>
                             <input type="password" id="password" placeholder="请输入密码" name="password" class="btn"/>
                         </div>
-                        <input type="submit" class="next" value="登录" > <!--使用submit，用form表单提交-->
+                        <input type="button" class="next" id="loginBtn" value="登录" > <!--使用submit，用form表单提交-->
                     </form><br/>
                     <a href="#" style="margin-top: 115px;margin-left: 120px; display: block;" id="toregister">注册</a>
                 </div>    <!--登录板块-->
@@ -215,7 +220,7 @@
                     <form>
                         <div class="number">
                             <span>手机号</span><br/>
-                            <input type="text" name="usernumber" id="usernumber" placeholder="请输入手机号" ><br/>
+                            <input type="text" name="usernumber" id="usernumber" placeholder="请输入手机号" > <span id="usernumberMsg"></span><br/>
                         </div>
                         <div class="security">
                             <span style="margin-top: 30px;">验证码</span><br/>
@@ -231,14 +236,14 @@
                         <span>新用户注册</span>
                         <em>请输入6-12位密码</em>
                     </div>
-                    <form action="" method="">
+                    <form action="<c:url value='/user/register'/> " method="post">
                         <div class="number">
                             <span>密码</span><br/>
-                            <input type="password" id="regispassword" name="regispassword" placeholder="请输入密码" ><br/>
+                            <input type="password" id="regispassword" name="regispassword" placeholder="请输入密码" ><span></span><br/>
                         </div>
                         <div class="security">
                             <span style="margin-top: 30px;">重复密码</span><br/>
-                            <input type="password" id="repassword" placeholder="再输入一次你设定的密码" name="repassword" class="btn"/>
+                            <input type="password" id="repassword" placeholder="再输入一次你设定的密码" name="repassword" class="btn"/><span></span>
                         </div>
                         <input type="submit" class="next" value="完成注册" id="complete"> <!--使用submit，用form表单提交-->
                     </form><br/>

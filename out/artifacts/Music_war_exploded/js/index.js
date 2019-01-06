@@ -123,8 +123,8 @@ window.onload=function(){
     $("#next").click(function(){
         var usernumber = $("#usernumber").val();
         var code = $("#security-code").val();
-        $.get(getRootPath()+"/user/registerNext",{number:usernumber,code:code},function(data){
-                if("false"==data){
+        $.get("/user/registerNext",{number:usernumber,code:code},function(data){
+                if( data == "false" ){
                     alert("验证码错误");
                 }else{
                     $("#register").hide();
@@ -133,7 +133,7 @@ window.onload=function(){
                     $("#regispassword").next().text("");
                 }
         });
-    });
+});
 
     /*验证注册密码是否正确*/
     $("#regispassword").blur(function(){
