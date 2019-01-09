@@ -59,4 +59,29 @@
         where id = #{id}
     </update>
 
+    <insert id="insertUserToMusic">
+        insert ignore into user_music (music_id, user_number)
+        values (#{musicId},#{phoneNumber})
+    </insert>
+
+    <!--根据number查询历史歌曲-->
+    <select id="selectHistoryMusicByNumber" resultMap="RM_HisMusic">
+       select m.id mid,
+              m.name mname,
+              m.songer msonger,
+              m.album malbum,
+              m.mp3 mmp3
+              from tb_music m
+              left outer join user_music um on m.id = um.music_id
+              where um.user_number = #{phoneNumber}
+    </select>
+    <resultMap id="RM_HisMusic" type="_Music">
+        <id property="id" column="mid"/>
+        <result property="name" column="mname"/>
+        <result property="songer" column="msonger"/>
+        <result property="alnum" column="album"/>
+        <result property="mp3" column="mmp3"/>
+    </resultMap>
+
+
 </mapper>

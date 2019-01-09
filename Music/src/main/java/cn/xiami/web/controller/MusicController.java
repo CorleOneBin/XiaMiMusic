@@ -227,5 +227,41 @@ public class MusicController {
         return "admin/member-list";
     }
 
+    /**
+     *
+     * 记录用户访问的音乐
+     *
+     */
+    @RequestMapping(value = "/music/recordMusic")
+    public void record(HttpServletRequest req,HttpServletResponse resp){
+        String phoneNumber =  req.getParameter("phoneNumber");
+        int musicId = Integer.parseInt(req.getParameter("musicId"));
+
+        System.out.println(phoneNumber+"----"+musicId);
+
+        ms.insertUserToMusic(phoneNumber,musicId);
+
+        try {
+            resp.getWriter().print(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @RequestMapping(value = "/music/toHistoryMusic")
+    public String toHistoryMusic(HttpServletRequest req){
+
+        System.out.println("123123");
+
+        String phoneNumber = req.getParameter("phoneNumber");
+        List<Music> list =  ms.selectHistoryMusicByNumber(phoneNumber);
+
+        req.setAttribute("list",list);
+
+        return  "historyList";
+    }
+
+
 
 }

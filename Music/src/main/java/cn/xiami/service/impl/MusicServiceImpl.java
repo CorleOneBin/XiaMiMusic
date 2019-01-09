@@ -6,11 +6,13 @@ import cn.xiami.dao.impl.MusicDao;
 import cn.xiami.module.Category;
 import cn.xiami.module.CinfoToMusic;
 import cn.xiami.module.Music;
+import cn.xiami.module.UserToMusic;
 import cn.xiami.service.CategoryService;
 import cn.xiami.service.MusicService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * music的service实现类
@@ -54,5 +56,23 @@ public class MusicServiceImpl extends BaseServiceImpl<Music> implements MusicSer
     public Integer selectMusicId() {
         return dao.selectMaxId()+1;
     }
+
+    /**
+     *
+     *
+     *
+     */
+    public void insertUserToMusic(String phoneNumber, int musicId) {
+        UserToMusic userToMusic = new UserToMusic();
+        userToMusic.setPhoneNumber(phoneNumber);
+        userToMusic.setMusicId(musicId);
+        dao.insertUserToMusic(userToMusic);
+    }
+
+    @Override
+    public List<Music> selectHistoryMusicByNumber(String phoneNumber) {
+        return dao.selectHistoryMusicByNumber(phoneNumber);
+    }
+
 
 }

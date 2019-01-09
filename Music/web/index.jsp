@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">发现</a></li>
-                <li><a href="<c:url value='/myMusic.jsp'/> ">我的音乐</a></li>
+                <li><a href="<c:url value='/user/updateSessionUser'/> ">我的音乐</a></li>
                 <li><a href="#">音乐人</a></li>
                 <li><a href="#">客户端下载</a></li>
                 <li><a href="#">会员中心</a></li>
@@ -278,10 +278,10 @@
         <span class="total-time" id="total-time">00:00</span>
     </div> <!--进度条拖拽块-->
     <div class="music">
-        <img src="<c:url value='/image/test.jpg'/>">
+        <img src="<c:url value='/image/you.jpg'/>">
         <div class="info">
-            <span class="content">男孩</span><br>
-            <span class="singer">梁博</span>
+            <span class="content">一路上有你</span><br>
+            <span class="singer">张学友</span>
         </div>
         <div class="like">
             <a href="#"><i class=" fa fa-heart-o fa-2x"></i></a>

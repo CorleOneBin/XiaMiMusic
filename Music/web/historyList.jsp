@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -12,9 +12,9 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link href="<c:url value='/css/reset.css' />" rel="stylesheet" />
-    <link href="<c:url value='/css/editUser.css '/>" rel="stylesheet" />
-    <script src="<c:url value='/js/editUser.js' /> " type="text/javascript"></script>
+    <link href="<c:url value='/css/reset.css'/>" rel="stylesheet" />
+    <link href="<c:url value='/css/musicList.css'/> " rel="stylesheet" />
+    <script src="<c:url value='/js/musicList.js'/> " type="text/javascript"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -31,7 +31,7 @@
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="<c:url value='/index.jsp'/> ">发现</a></li>
+                <li ><a href="<c:url value='/index.jsp'/> ">发现</a></li>
                 <li><a href="<c:url value='/user/updateSessionUser'/> ">我的音乐</a></li>
                 <li><a href="#">音乐人</a></li>
                 <li><a href="#">客户端下载</a></li>
@@ -45,7 +45,7 @@
                 <c:if test="${not empty sessionScope.user}">
                     <li class="dropdown login">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            ${sessionScope.user.nickName}
+                                ${sessionScope.user.nickName}
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
@@ -67,26 +67,6 @@
 
     </div>
 </nav> <!--顶部导航栏-->
-<div class="row">
-    <form action="<c:url value='/user/updateUser'/> " method="post">
-        <div class="edit-content">
-                <div class="cover">
-                    <i class="fa fa-camera-retro fa-2x"></i>
-                </div>
-                <input type="file" style="display: none" id="img-file">
-                <input type="hidden" name="phoneNumber" value="${sessionScope.user.phoneNumber}"/>
-                <div class="nickName">
-                    <h2>昵称</h2>
-                    <input type="text" name="nickName" value="${sessionScope.user.nickName}" />
-                </div>
-                <div class="descri">
-                    <h2>签名</h2>
-                    <input type="text" name="signature" value="${sessionScope.user.description}" />
-                </div>
-                <input type="submit" value="保存" class="save">
-        </div>
-    </form>
-</div>
 <div class="play-bar navbar-fixed-bottom">  <!--播放器部分-->
     <div class="progress my-progress">
         <div class="progress-bar my-progress-bar" id="play-progress-bar" role="progressbar" aria-valuenow="60"
@@ -134,6 +114,81 @@
         </div>
     </div>  <!--右边部分-->
 </div> <!--底部播放器-->
+<div class="row my-row">
+    <div class="col-sm-1">
+        <div class="leftbar-content">
+
+        </div>
+    </div>
+    <div class="col-sm-11">
+        <div class="rightbar-content">
+            <div style="font-size: 24px; font-weight: 500;">${cinfo.name}</div>
+            <div style="margin-top: 10px">
+                <span style="font-weight: 300;">${cinfo.tag}</span>
+            </div>
+            <div class="button">
+                <i class="fa fa-play fa-1x"></i>
+                全部播放
+            </div>
+            <div class="top">
+                <p style="margin-left: 43px;">歌曲</p>
+                <p style="margin-left: 173px;">歌手</p>
+                <p style="margin-left: 143px;">专辑</p>
+                <p style="margin-left: 350px;">下载/收藏</p>
+            </div>
+            <ul class="list">
+                <c:forEach items="${list}" var="beans" varStatus="status">
+                    <c:choose>
+                        <c:when test="${status.index%2==0}">
+                            <li class="li-double">
+                                <p class="number">${status.index+1}</p>
+                                <p class="m-name">${beans.name}</p>
+                                <input type="hidden" class="mp3Url" value="${beans.mp3}">
+                                <p class="s-name">${beans.songer}</p>
+                                <input type="hidden" class="imgHref" value="${cinfo.imgHref}">
+                                <p class="a-name">${beans.album}</p>
+                                <p class="dowload">
+                                    <a href="<c:url value='/music/musicDownload?mp3Url=${beans.mp3}&name=${beans.name}'/>"><i class="fa fa-download"></i></a> /
+                                    <span style="cursor: pointer;">收藏</span>
+                                <div class="collect" style="display: none;">
+                                <c:forEach items="${sessionScope.user.cinfos}" var="cinfo">
+                                    <div class="cate-item">${cinfo.name}</div>
+                                    <input type="hidden" value="${cinfo.id}">
+                                    <input type="hidden" value="${beans.id}">
+                                </c:forEach>
+                                </div>
+                                </p>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li>
+                                <p class="number">${status.index+1}</p>
+                                <p class="m-name">${beans.name}</p>
+                                <p class="s-name">${beans.songer}</p>
+                                <p class="a-name">${beans.album}</p>
+                                <p class="dowload">
+                                    <a href="<c:url value='/music/musicDownload?mp3Url=${beans.mp3}&name=${beans.name}'/>"><i class="fa fa-download"></i></a> /
+                                    <span style="cursor: pointer;">收藏</span>
+                                <div class="collect" style="display: none;">
+                                <c:forEach items="${sessionScope.user.cinfos}" var="cinfo">
+                                    <div class="cate-item">${cinfo.name}</div>
+                                    <input type="hidden" value="${cinfo.id}">
+                                    <input type="hidden" value="${beans.id}">
+                                </c:forEach>
+                                </div>
+                                </p>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </ul> <!--歌曲列表-->
+            <div class="pages">
+                <a href="#" class="current">1</a>
+                <a href="#">2</a>
+            </div>
+        </div>
+    </div>
+</div> <%--中间部分--%>
 <div class="modal fade " id="login-panel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
     <div class="modal-dialog">
         <div class="modal-content">
@@ -202,7 +257,8 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div><!--登录面板-->
+<div style="height: 100px">
 
-<div style="height: 1000px;"></div>
+</div>
 </body>
 </html>

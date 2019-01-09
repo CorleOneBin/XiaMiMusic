@@ -7,4 +7,6 @@ import cn.xiami.module.Admin;
  */
 public interface AdminService extends BaseService<Admin>{
 
+    boolean judgeLogin(String username,String password);
+
 }

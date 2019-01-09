@@ -120,5 +120,6 @@ class MusicParse:
                 print("id=%d,name=%s,songer=%s,  album=%s, cinfoHref=%s  musicHref=%s,  mp3=%s" % (int(musicId),musicName,songer,album,cinfoHref,musicHref,mp3Url))
 
 
-MusicParse().parse()
+CinfoParse().parse();
+MusicParse().parse();
 

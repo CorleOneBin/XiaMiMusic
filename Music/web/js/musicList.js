@@ -325,6 +325,15 @@ $(document).ready(function(){
         audio.play()
         $("#playBtn").removeClass("fa fa-play-circle");
         $("#playBtn").addClass("fa fa-pause-circle");
+
+        var phoneNumber = $(this).prev().attr("value");
+        var musicId = $(this).prev().prev().attr("value");
+
+
+        $.get(getRootPath()+"/music/recordMusic",{phoneNumber:phoneNumber,musicId:musicId},function(data){
+
+        });
+
     });
 
 });

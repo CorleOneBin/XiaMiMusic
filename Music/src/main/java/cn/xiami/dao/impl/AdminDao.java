@@ -36,4 +36,12 @@ public class AdminDao extends AbstractDao implements BaseDao<Admin> {
         return null;
     }
 
+    public boolean judgeLogin(String username,String password){
+        String pass =  getSqlSession().selectOne("admin.judgeLogin",username);
+        if(pass != null && pass.equals(password)){
+            return true;
+        }
+        return false;
+    }
+
 }

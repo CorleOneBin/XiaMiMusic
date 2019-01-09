@@ -29,7 +29,7 @@
 <div class="header" style="color: white; font-size: 20px;"> &nbsp;&nbsp;&nbsp;&nbsp;虾米音乐后台管理系统</div>
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" action="index.html" method="post">
+    <form class="form form-horizontal" action="<c:url value='/admin/login'/> " method="post">
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
         <div class="formControls col-xs-8">
@@ -44,7 +44,7 @@
       </div>
       <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
-          <input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">
+          <input class="input-text size-L" name="checkcode" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">
           <img id="img" src="<c:url value='/admin/createCheckCode'/>"> <a id="kanbuq" href="javascript:;">看不清，换一张</a> </div>
       </div>
       <div class="row cl">

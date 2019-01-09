@@ -3,6 +3,7 @@ package cn.xiami.dao.impl;
 import cn.xiami.dao.BaseDao;
 import cn.xiami.module.CinfoToMusic;
 import cn.xiami.module.Music;
+import cn.xiami.module.UserToMusic;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -62,5 +63,13 @@ public class MusicDao extends AbstractDao implements BaseDao<Music> {
 
     public Integer selectMaxId() {
         return getSqlSession().selectOne("music.selectMaxId");
+    }
+
+    public void insertUserToMusic(UserToMusic userToMusic) {
+        getSqlSession().insert("music.insertUserToMusic",userToMusic);
+    }
+
+    public List<Music> selectHistoryMusicByNumber(String phoneNumber) {
+        return getSqlSession().selectList("music.selectHistoryMusicByNumber",phoneNumber);
     }
 }

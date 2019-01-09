@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value='/index.jsp'/> ">发现</a></li>
-                <li><a href="<c:url value='/myMusic.jsp'/> ">我的音乐</a></li>
+                <li><a href="<c:url value='/user/updateSessionUser'/> ">我的音乐</a></li>
                 <li><a href="#">音乐人</a></li>
                 <li><a href="#">客户端下载</a></li>
                 <li><a href="#">会员中心</a></li>
@@ -70,41 +70,43 @@
 <div class="content-wrapper">
     <div class="edit-collect-view">
         <div class="title">创建歌单</div>
-        <div class="edit-collect">
-            <div class="collect-side">
-                <div class="cover" style="background-size: 100% 100%;">
-                    <i class="fa fa-camera-retro fa-2x"></i>
-                    <div>添加封面</div>
-                    <input type="hidden" id="localUrl" value=""><%--存放上传封面的本地路径--%>
+        <form action="" method="">
+            <div class="edit-collect">
+                <div class="collect-side">
+                    <div class="cover" style="background-size: 100% 100%;">
+                        <i class="fa fa-camera-retro fa-2x"></i>
+                        <div>添加封面</div>
+                        <input type="hidden" id="localUrl" value=""><%--存放上传封面的本地路径--%>
+                    </div>
+                        <input type="file" style="display: none;" id="choose-file">
+                        <div style="font-weight: 300; font-size: 14px; margin-top: 15px">图片最佳尺寸 1200*1200</div>
                 </div>
-                    <input type="file" style="display: none;" id="choose-file">
-                    <div style="font-weight: 300; font-size: 14px; margin-top: 15px">图片最佳尺寸 1200*1200</div>
-            </div>
-            <div class="collect-main">
-                <div class="edit-collect-title">
-                    <span style="font-size: 16px; font-weight: 500;">标题</span><span style="font-size: 14px; color: #999; font-weight: 300; margin-left: 10px;">最多30个字符</span><br>
-                    <input type="text" name="input-title" class="input-title">
-                </div>
-                <div class="edit-collect-tag">
-                    <span style="font-size: 16px; font-weight: 500;">标签</span><span style="font-size: 14px; color: #999; font-weight: 300; margin-left: 10px;">最多可选择3个标签</span><br>
-                    <div class="tags">
-                        <input type="hidden"  id="userPhoneNumber" value="${sessionScope.user.phoneNumber}">
-                        <c:forEach items="${cateList}" var="cate">
-                            <input type="hidden" value="${cate.id}">
-                            <div class="tag-item">${cate.name}</div>
-                        </c:forEach>
+                <div class="collect-main">
+                    <div class="edit-collect-title">
+                        <span style="font-size: 16px; font-weight: 500;">标题</span><span style="font-size: 14px; color: #999; font-weight: 300; margin-left: 10px;">最多30个字符</span><br>
+                        <input type="text" name="input-title" class="input-title">
+                    </div>
+                    <div class="edit-collect-tag">
+                        <span style="font-size: 16px; font-weight: 500;">标签</span><span style="font-size: 14px; color: #999; font-weight: 300; margin-left: 10px;">最多可选择3个标签</span><br>
+                        <div class="tags">
+                            <input type="hidden"  id="userPhoneNumber" value="${sessionScope.user.phoneNumber}">
+                            <c:forEach items="${cateList}" var="cate">
+                                <input type="hidden" value="${cate.id}">
+                                <div class="tag-item">${cate.name}</div>
+                            </c:forEach>
+                        </div>
+                    </div>
+                    <div class="edit-collect-desciption">
+                        <span style="font-size: 16px; font-weight: 500;">简介</span><br/>
+                        <textarea class="description" name="description" placeholder="我来说两句..." style="margin-top: 10px;"></textarea>
+                    </div>
+                    <div class="operation">
+                        <div class="cancel">取消</div>
+                        <div class="save">保存</div>
                     </div>
                 </div>
-                <div class="edit-collect-desciption">
-                    <span style="font-size: 16px; font-weight: 500;">简介</span><br/>
-                    <textarea class="description" name="description" placeholder="我来说两句..." style="margin-top: 10px;"></textarea>
-                </div>
-                <div class="operation">
-                    <div class="cancel">取消</div>
-                    <div class="save">保存</div>
-                </div>
-            </div>
-        </div>
+          </div>
+        </form>
     </div>
 </div> <%--中间部分--%>
 <div class="play-bar navbar-fixed-bottom">  <!--播放器部分-->
@@ -120,10 +122,10 @@
         <span class="total-time" id="total-time">00:00</span>
     </div> <!--进度条拖拽块-->
     <div class="music">
-        <img src="<c:url value='/image/test.jpg'/> ">
+        <img src="<c:url value='/image/you.jpg'/> ">
         <div class="info">
-            <span class="content">男孩</span><br>
-            <span class="singer">梁博</span>
+            <span class="content">一路上有你</span><br>
+            <span class="singer">张学友</span>
         </div>
         <div class="like">
             <a href="#"><i class=" fa fa-heart-o fa-2x"></i></a>

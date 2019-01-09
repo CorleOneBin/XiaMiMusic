@@ -80,10 +80,10 @@
         <span class="total-time" id="total-time">00:00</span>
     </div> <!--进度条拖拽块-->
     <div class="music">
-        <img src="<c:url value='/image/test.jpg'/>">
+        <img src="<c:url value='/image/you.jpg'/>">
         <div class="info">
-            <span class="content">男孩</span><br>
-            <span class="singer">梁博</span>
+            <span class="content">一路上有你</span><br>
+            <span class="singer">张学友</span>
         </div>
         <div class="like">
             <a href="#"><i class=" fa fa-heart-o fa-2x"></i></a>
@@ -146,6 +146,8 @@
                         <c:when test="${status.index%2==0}">
                             <li class="li-double">
                                 <p class="number">${status.index+1}</p>
+                                <input type="hidden" value="${beans.id}" >
+                                <input type="hidden" value="${sessionScope.user.phoneNumber}">
                                 <p class="m-name">${beans.name}</p>
                                 <input type="hidden" class="mp3Url" value="${beans.mp3}">
                                 <p class="s-name">${beans.songer}</p>
@@ -167,7 +169,10 @@
                         <c:otherwise>
                             <li>
                                 <p class="number">${status.index+1}</p>
+                                <input type="hidden" value="${beans.id}" >
+                                <input type="hidden" value="${sessionScope.user.phoneNumber}">
                                 <p class="m-name">${beans.name}</p>
+                                <input type="hidden" class="mp3Url" value="${beans.mp3}">
                                 <p class="s-name">${beans.songer}</p>
                                 <p class="a-name">${beans.album}</p>
                                 <p class="dowload">
@@ -262,7 +267,8 @@
     </div><!-- /.modal -->
 </div><!--登录面板-->
 <div style="height: 100px">
-
+<script>
+</script>
 </div>
 </body>
 </html>

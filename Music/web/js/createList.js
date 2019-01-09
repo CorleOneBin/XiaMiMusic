@@ -172,6 +172,15 @@ window.onload=function(){
 
 $(document).ready(function(){
 
+    function sleep(n) {
+        var start = new Date().getTime();
+        while (true) {
+            if (new Date().getTime() - start > n) {
+                break;
+            }
+        }
+    }
+
     /*选择标签*/
     $(".tag-item").click(function(){
         var selectd = $(".selected");
@@ -204,28 +213,45 @@ $(document).ready(function(){
         var cinfoName = $(".input-title").val();
         //描述
         var descr = $(".description").val();
-        //需要上传的图片的本地路径
-        var backUrl =  $("#localUrl").val();
+        //需要上传的图片
+        var file=  $("#choose-file")[0].files[0];
+
         for( var i = 0; i < selected.length; i++){
             cateName[i] = selected[i].innerHTML
             var input =  selected[i].previousElementSibling;
             cateId[i] = String(input.value);
         }
 
+        var formData = new FormData();
+        formData.append("myfile",file);
+        formData.append("cateName",cateName);
+        formData.append("cateId",cateId);
+        formData.append("phoneNumber",phoneNumber);
+        formData.append("cinfoName",cinfoName);
+        formData.append("descr",descr);
 
-        $.ajax({
+        var xhr = new XMLHttpRequest();
+        xhr.open("post",getRootPath()+"/cinfo/createCinfo");
+
+        xhr.send(formData);
+        sleep(2000);
+        window.location.href=getRootPath()+"/user/updateSessionUser";
+
+      /*  $.ajax({
             type: "post",
             url:  getRootPath()+"/cinfo/createCinfo",
             cache: false,
             traditional:true,
             dataType: "json",
-            data:{cateName:cateName,cateId:cateId,cinfoName:cinfoName,phoneNumber:phoneNumber,descr:descr,backUrl:backUrl},
+            contentType: false,
+            processData: false,
+            data:formData,/!*{cateName:cateName,cateId:cateId,cinfoName:cinfoName,phoneNumber:phoneNumber,descr:descr,formData:formData},*!/
             success: function (ret) {
                 if(ret == true){
                     window.location.href=getRootPath()+"/user/updateSessionUser"
                 }
             },
-        });
+        });*/
 
     });
 

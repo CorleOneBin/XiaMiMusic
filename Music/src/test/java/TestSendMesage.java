@@ -1,13 +1,9 @@
 import cn.xiami.util.MyUtil;
-import com.cloopen.rest.sdk.CCPRestSmsSDK;
 import org.junit.Test;
-
-import java.util.HashMap;
-import java.util.Set;
 
 public class TestSendMesage {
 
-    @Test
+    /*@Test
     public void testSendMessage(){
         HashMap<String, Object> result = null;
         CCPRestSmsSDK restAPI = new CCPRestSmsSDK();
@@ -31,7 +27,7 @@ public class TestSendMesage {
             //异常返回输出错误码和错误信息
             System.out.println("错误码=" + result.get("statusCode") +" 错误信息= "+result.get("statusMsg"));
         }
-    }
+    }*/
 
     @Test
     public void testRandom(){

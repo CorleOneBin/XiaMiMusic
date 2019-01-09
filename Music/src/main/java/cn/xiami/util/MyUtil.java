@@ -1,12 +1,14 @@
 package cn.xiami.util;
 
 import com.cloopen.rest.sdk.CCPRestSmsSDK;
+import sun.applet.Main;
 
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 
 public class MyUtil {
 
@@ -105,13 +107,25 @@ public class MyUtil {
      * 随机获取名字
      */
     public static String getName(){
+
         Random random = new Random();
+
         final int dela = 0x9fa5-0x4e00+1;
-        String name = "";
+        /*String name = "";
         for(int i = 0; i < 4; i++){
             char a = (char)(0x4e00+random.nextInt(dela));
             name+=a;
-        }
+        }*/
+        List<String> list = new ArrayList<>();
+        list.add("挽风微凉");
+        list.add("柠檬暖灿");
+        list.add("俗了清风");
+        list.add("曾经沧海");
+        list.add("人生如梦");
+        list.add("曾经沧海");
+
+        String name  = list.get(random.nextInt(list.size()));
+
         return name;
     }
 
@@ -130,6 +144,8 @@ public class MyUtil {
         int b = fc + random.nextInt(bc - fc);
         return new Color(r, g, b);
     }
+
+
  }
 
 

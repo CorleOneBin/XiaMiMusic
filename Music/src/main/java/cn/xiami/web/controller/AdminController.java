@@ -115,4 +115,21 @@ public class AdminController {
 
     }
 
+
+    @RequestMapping(value = "/admin/login")
+    public String adminLogin(HttpServletRequest req){
+
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String checkcode = req.getParameter("checkcode");
+        String preCode = (String) req.getSession().getAttribute("checkcode");
+
+        if(as.judgeLogin(username,password) && preCode.equals(checkcode)){
+            return "admin/index";
+        }
+
+        return "admin/login";
+    }
+
+
 }

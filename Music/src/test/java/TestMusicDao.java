@@ -19,6 +19,17 @@ public class TestMusicDao {
         }
     }
 
+    @Test
+    public void testSelectHistory(){
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        MusicDao musicDao = (MusicDao) ac.getBean("musicDao");
+        List<Music> list =  musicDao.selectHistoryMusicByNumber("15274464875");
+        for (Music music : list) {
+            System.out.println(music.getName());
+        }
+    }
+
+
 
 
 }

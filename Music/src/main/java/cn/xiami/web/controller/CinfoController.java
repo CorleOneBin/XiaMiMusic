@@ -3,20 +3,27 @@ package cn.xiami.web.controller;
 import cn.xiami.module.Cinfo;
 import cn.xiami.service.CinfoService;
 import cn.xiami.util.MyUtil;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import javax.xml.ws.spi.http.HttpContext;
+import java.io.*;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  *
@@ -44,36 +51,72 @@ public class CinfoController {
      * 创建新的歌单
      */
     @RequestMapping(value = "/cinfo/createCinfo")
-    public void  createCinfo(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void  createCinfo(HttpServletRequest req, HttpServletResponse resp/*,@RequestParam MultipartFile uploadFile*/) throws IOException {
+        req.setCharacterEncoding("utf-8");
+        DiskFileItemFactory dif = new DiskFileItemFactory();
+        ServletFileUpload sfu = new ServletFileUpload(dif);
+        List<FileItem> fil = null;
 
         //种类名字
-        String cateName[] =  req.getParameterValues("cateName");
+        String cateName[] =  null;
+        String cateNames = null;
         //种类的Id
-        String cateId[] = req.getParameterValues("cateId");
+        String cateId[] = null;
+        String cateIds = null;
         //歌单的名字
-        String cinfoName = req.getParameter("cinfoName");
+        String cinfoName = null;
         //用户名
-        String phoneNumber = req.getParameter("phoneNumber");
+        String phoneNumber = null;
         //歌单简介
-        String desc = req.getParameter("descr");
-        //背景图片的本地路径
-        String backUrl = req.getParameter("backUrl");
-        backUrl = "D:\\"+backUrl.substring(backUrl.lastIndexOf("\\")+1);
-        //存入图片
-        String srcPath = req.getServletContext().getRealPath("/image/upload");
-        //图片路径
-        String imgHref  =  MyUtil.uploadCinfoImg(backUrl,srcPath,phoneNumber);
-        //id
+        String desc = null;
+        String imgHref = null;
+
+        try {
+            fil =  sfu.parseRequest(req);
+            for (FileItem fim : fil)  {
+                if(fim.isFormField()){
+                    if("cateName".equals(fim.getFieldName())){
+                        cateNames = fim.getString();
+                    }else if("cateId".equals(fim.getFieldName())){
+                        cateIds = fim.getString();
+                    }else if("phoneNumber".equals(fim.getFieldName())){
+                        phoneNumber = fim.getString();
+                    }else if("cinfoName".equals(fim.getFieldName())){
+                        cinfoName = fim.getString();
+                    }else if("descr".equals(fim.getFieldName())){
+                        desc = fim.getString();
+                    }
+                }else{
+                    String path = req.getServletContext().getRealPath("/image/upload");
+                    String fileName = UUID.randomUUID()+ fim.getName().substring(fim.getName().lastIndexOf("."));
+                    imgHref = "/image/upload/"+fileName;
+                    fim.write(new File(path,fileName));
+                }
+            }
+
+        } catch (FileUploadException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        cateId = cateIds.split(",");
+
         int cinfoId = cs.selectId();
 
         Cinfo cinfo = new Cinfo();
         //随便取其中一个种类的名字为其tag
-        cinfo.setTag(cateName[0]);
+        cinfo.setTag("tag");
         cinfo.setDescri(desc);
         cinfo.setName(cinfoName);
-        cinfo.setImgHref(imgHref);
         cinfo.setNum(0);
+        cinfo.setImgHref(imgHref);
         cinfo.setId(cinfoId);
+
+
+        //插入对应的cinfo到基本表
+        cs.insert(cinfo);
 
 
         //插入cinfo对应的cate到关联表
@@ -83,9 +126,6 @@ public class CinfoController {
 
         //插入cinfo对应的user到关联表
         cs.insertUsertoCinfo(phoneNumber,cinfoId);
-
-        //插入对应的cinfo到基本表
-        cs.insert(cinfo);
 
         resp.getWriter().print(true);
 
