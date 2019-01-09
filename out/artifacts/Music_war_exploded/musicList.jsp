@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li ><a href="<c:url value='/index.jsp'/> ">发现</a></li>
-                <li><a href="<c:url value='/myMusic.jsp'/> ">我的音乐</a></li>
+                <li><a href="<c:url value='/user/updateSessionUser'/> ">我的音乐</a></li>
                 <li><a href="#">音乐人</a></li>
                 <li><a href="#">客户端下载</a></li>
                 <li><a href="#">会员中心</a></li>

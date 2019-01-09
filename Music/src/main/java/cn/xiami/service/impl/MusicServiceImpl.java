@@ -46,4 +46,13 @@ public class MusicServiceImpl extends BaseServiceImpl<Music> implements MusicSer
         }
         return flag;
     }
+
+    /**
+     * 获取music的id
+     * 即max(id) + 1
+     */
+    public Integer selectMusicId() {
+        return dao.selectMaxId()+1;
+    }
+
 }

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -90,6 +91,18 @@ public class CinfoController {
 
     }
 
+
+    /**
+     * 管理页面，跳转到添加歌曲时，把cinfo带过去
+     */
+    @RequestMapping(value = "/cinfo/toAddMusic")
+    public String toAddMusic(Model model){
+        List<Cinfo> cinfos =  cs.selectAll();
+        model.addAttribute("cinfos",cinfos);
+        return "admin/member-add";
+    }
+
 }
+
 
 

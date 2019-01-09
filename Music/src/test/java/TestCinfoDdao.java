@@ -31,4 +31,15 @@ public class TestCinfoDdao {
         System.out.println(a);
     }
 
+    @Test
+    public void testSelectAll(){
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        CinfoDao cd = (CinfoDao) ac.getBean("cinfoDao");
+        List<Cinfo> list =  cd.selectAll();
+        for (Cinfo cinfo : list) {
+            System.out.println(cinfo.getName());
+        }
+
+    }
+
 }

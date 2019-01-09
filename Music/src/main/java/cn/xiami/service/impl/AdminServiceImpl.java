@@ -30,7 +30,4 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
     @Resource(name = "adminDao")
      AdminDao dao;
 
-
-
-
 }

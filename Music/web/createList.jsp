@@ -88,6 +88,7 @@
                 <div class="edit-collect-tag">
                     <span style="font-size: 16px; font-weight: 500;">标签</span><span style="font-size: 14px; color: #999; font-weight: 300; margin-left: 10px;">最多可选择3个标签</span><br>
                     <div class="tags">
+                        <input type="hidden"  id="userPhoneNumber" value="${sessionScope.user.phoneNumber}">
                         <c:forEach items="${cateList}" var="cate">
                             <input type="hidden" value="${cate.id}">
                             <div class="tag-item">${cate.name}</div>

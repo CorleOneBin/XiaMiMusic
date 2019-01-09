@@ -98,32 +98,40 @@ window.onload=function(){
        }
     });
 
+    // //倒计时
+    // var maxtime = 60;
+    // function CountDown() {
+    //     if (maxtime >= 0) {
+    //         seconds = Math.floor(maxtime % 60);
+    //         $(".sendCode").val(seconds);
+    //         --maxtime;
+    //     } else{
+    //         clearInterval(timer);
+    //     }
+    // }
+
     /*发送验证码*/
     $(".sendCode").click(function(){
         var usernumber = $("#usernumber").val();
         var backColor = $(".sendCode").css("background-color")
+        var maxtime = 59;
         if(backColor=="rgb(255, 65, 15)"){
             $.get(getRootPath()+"/user/sendCode",{number:usernumber},function(data){
-
+                setInterval(function () {
+                    if(maxtime >= 0){
+                        seconds = Math.floor(maxtime % 60);
+                        $(".sendCode").val(seconds+"后再发送");
+                        --maxtime;
+                        $(".sendCode").css("background-color","#656565");
+                    }else{
+                        clearInterval();
+                        $(".sendCode").css("background-color","#ff410f");
+                        $(".sendCode").val("发送验证码");
+                    }
+                }, 1000);
             })
         }
     });
-
-    var maxtime = 60 * 60; //一个小时，按秒计算，自己调整!
-    function CountDown() {
-        if (maxtime >= 0) {
-            minutes = Math.floor(maxtime / 60);
-            seconds = Math.floor(maxtime % 60);
-            msg = "距离结束还有" + minutes + "分" + seconds + "秒";
-            document.all["timer"].innerHTML = msg;
-            if (maxtime == 5 * 60)alert("还剩5分钟");
-            --maxtime;
-        } else{
-            clearInterval(timer);
-            alert("时间到，结束!");
-        }
-    }
-    timer = setInterval("CountDown()", 1000);
 
     /*使下一步可以点击*/
     $("#security-code").blur(function(){
@@ -140,7 +148,7 @@ window.onload=function(){
     $("#next").click(function(){
         var usernumber = $("#usernumber").val();
         var code = $("#security-code").val();
-        $.get("/user/registerNext",{number:usernumber,code:code},function(data){
+        $.get(getRootPath()+"/user/registerNext",{number:usernumber,code:code},function(data){
                 if( data == "false" ){
                     alert("验证码错误");
                 }else{

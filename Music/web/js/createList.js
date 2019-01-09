@@ -199,7 +199,7 @@ $(document).ready(function(){
         //category的id
         var cateId = new Array();
         //用户名
-        var phoneNumber =  $("#toUserPanel").text()
+        var phoneNumber =  $("#userPhoneNumber").val();
         //歌单名字
         var cinfoName = $(".input-title").val();
         //描述

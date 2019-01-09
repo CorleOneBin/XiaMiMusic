@@ -95,6 +95,8 @@ public class UserController {
         User user = new User();
         user.setPhoneNumber(phoneNumber);
         user.setPassword(password);
+        user.setDescription("我还没想好写什么");
+        user.setNickName(MyUtil.getName());
         us.insert(user);
         return "redirect:/index.jsp";
     }

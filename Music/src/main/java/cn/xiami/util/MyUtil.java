@@ -2,6 +2,7 @@ package cn.xiami.util;
 
 import com.cloopen.rest.sdk.CCPRestSmsSDK;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class MyUtil {
      */
     public static int Random(){
         Random random = new Random();
-        int result = random.nextInt(8999)+1000;
+        int result = random.nextInt(899999)+100000;
         return result;
     }
 
@@ -100,6 +101,35 @@ public class MyUtil {
         return y+"_"+m+"_"+d+"_"+H+"_"+M+"_"+s;
     }
 
-}
+    /**
+     * 随机获取名字
+     */
+    public static String getName(){
+        Random random = new Random();
+        final int dela = 0x9fa5-0x4e00+1;
+        String name = "";
+        for(int i = 0; i < 4; i++){
+            char a = (char)(0x4e00+random.nextInt(dela));
+            name+=a;
+        }
+        return name;
+    }
+
+
+    public static Color getRandColor(int fc, int bc) {
+        // 取其随机颜色
+        Random random = new Random();
+        if (fc > 255) {
+            fc = 255;
+        }
+        if (bc > 255) {
+            bc = 255;
+        }
+        int r = fc + random.nextInt(bc - fc);
+        int g = fc + random.nextInt(bc - fc);
+        int b = fc + random.nextInt(bc - fc);
+        return new Color(r, g, b);
+    }
+ }
 
 

@@ -38,7 +38,8 @@
 
     <!--增加用户-->
     <insert id="insert">
-        insert into tb_user (phone_number, password, nick_name, desciption) values (#{phoneNumber},#{password},#{nickName},#{description})
+        insert into tb_user (phone_number, password, nick_name, desciption)
+        values (#{phoneNumber},#{password},#{nickName},#{description})
     </insert>
 
 

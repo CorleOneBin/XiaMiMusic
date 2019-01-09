@@ -15,15 +15,16 @@ public class MusicDao extends AbstractDao implements BaseDao<Music> {
 
 
     public void insert(Music music) {
-
+        getSqlSession().insert("music.insert",music);
     }
 
     public void update(Music music) {
-
+        getSqlSession().update("music.update",music);
     }
 
     public void delete(Integer id) {
-
+        getSqlSession().delete("music.delete",id);
+        getSqlSession().delete("music.deleteCinfoToMusic",id);
     }
 
     public Music selectOne(Integer id) {
@@ -31,11 +32,11 @@ public class MusicDao extends AbstractDao implements BaseDao<Music> {
     }
 
     public List<Music> selectAll() {
-        return null;
+        return getSqlSession().selectList("music.selectAll");
     }
 
     public Integer selectCount() {
-        return null;
+        return getSqlSession().selectOne("music.selectCount");
     }
 
     /**
@@ -59,4 +60,7 @@ public class MusicDao extends AbstractDao implements BaseDao<Music> {
         getSqlSession().update("cinfo.updateCinfoNum",cinfoId);
     }
 
+    public Integer selectMaxId() {
+        return getSqlSession().selectOne("music.selectMaxId");
+    }
 }

@@ -31,7 +31,7 @@ public class CinfoDao extends AbstractDao implements BaseDao<Cinfo> {
     }
 
     public List<Cinfo> selectAll() {
-        return null;
+        return getSqlSession().selectList("cinfo.selectAll");
     }
 
     public Integer selectCount() {

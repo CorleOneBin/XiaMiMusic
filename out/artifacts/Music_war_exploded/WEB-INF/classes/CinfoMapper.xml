@@ -40,6 +40,7 @@
         </collection>
     </resultMap>
 
+    <!--获取cinfo的最大Id-->
     <select id="selectMaxId" resultType="int">
         select max(id) from tb_cinfo;
     </select>
@@ -66,5 +67,16 @@
     <update id="updateCinfoNum">
       update tb_cinfo  set num = num+1 where id = #{cinfoId}
     </update>
+
+    <!--查询所有的cinfo的信息，但不查出其下的歌曲-->
+    <select id="selectAll" resultMap="RM_Cinfo">
+        select c.id cid,
+               c.imgHref cimgHref,
+               c.name cname,
+               c.num cnum,
+               c.descri cdescri,
+               c.tag ctag
+               from tb_cinfo c
+    </select>
 
 </mapper>

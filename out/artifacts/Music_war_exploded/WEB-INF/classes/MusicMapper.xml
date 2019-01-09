@@ -6,7 +6,57 @@
 
     <!--收藏歌曲，插入关联表-->
     <insert id="insertCinfoToMusic">
-        insert into cinfo_music (cinfo_id, music_id) values (#{cinfoId},#{musicId})
+        insert ignore into cinfo_music (cinfo_id, music_id) values (#{cinfoId},#{musicId})
     </insert>
+
+    <!--查询所有的music-->
+    <select id="selectAll" resultMap="RM_Music">
+        select m.id mid,
+               m.name mname,
+               m.songer msonger,
+               m.album malbum,
+               m.mp3 mmp3
+               from tb_music m
+    </select>
+    <resultMap id="RM_Music" type="_Music">
+        <id property="id" column="mid"/>
+        <result property="name" column="mname"/>
+        <result property="songer" column="msonger"/>
+        <result property="album" column="malbum"/>
+        <result property="mp3" column="mmp3"/>
+    </resultMap>
+
+
+    <!--删除歌曲-->
+    <delete id="delete">
+       delete from tb_music where id = #{id}
+    </delete>
+
+    <!--删除cinfo与歌曲的对应关系-->
+    <delete id="deleteCinfoToMusic">
+       delete from cinfo_music where music_id = #{id}
+    </delete>
+
+    <!--查询歌曲数-->
+    <select id="selectCount" resultType="int">
+        select count(*) from tb_music;
+    </select>
+
+    <!--查找最大的id-->
+    <select id="selectMaxId" resultType="int">
+        select max(id) from tb_music;
+    </select>
+
+    <!--插入条歌曲-->
+    <insert id="insert">
+        insert into tb_music (id, name, songer, album, mp3)
+        values (#{id},#{name},#{songer},#{album},#{mp3})
+    </insert>
+
+    <!--更新歌曲信息-->
+    <update id="update">
+        update tb_music set name=#{name},songer=#{songer},album=#{album}
+        where id = #{id}
+    </update>
 
 </mapper>

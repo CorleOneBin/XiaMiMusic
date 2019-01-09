@@ -14,4 +14,8 @@ public interface MusicService extends BaseService<Music>{
      */
     boolean insertCinfoToMusic(int cinfoId,int musicId);
 
+    /**
+     * 获取musicId，即最大id+1
+     */
+    Integer selectMusicId();
 }
