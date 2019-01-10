@@ -1,0 +1,76 @@
+2019-01-10 17:05:35 - Thu Jan 10 17:05:35 CST 2019 sendTemplateSMS url = https://app.cloopen.com:8883/2013-12-26/Accounts/8aaf07086812057f016816a6c3880237/SMS/TemplateSMS?sig=A5784E88404A13BAB21E68EB989FB6A0
+2019-01-10 17:05:36 - Thu Jan 10 17:05:36 CST 2019 sendTemplateSMS Request body =  {"appId":"8aaf07086812057f016816a6c3da023d","to":"15274464875","templateId":"1","datas":["验证码为441778","2"]}
+2019-01-10 17:05:39 - Thu Jan 10 17:05:39 CST 2019 sendTemplateSMS response body = {"statusCode":"000000","templateSMS":{"smsMessageSid":"024c36cf634f41e69bdfbcdc0a44a1d5","dateCreated":"20190110170539"}}
+2019-01-10 17:07:46 - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-01-10 17:07:52 - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2019-01-10 17:08:08 - 15274464875 - 137570 - play
+2019-01-10 17:08:18 - 15274464875 - 137570 - download
+2019-01-10 17:08:59 - 15274464875 - 219014 - play
+2019-01-10 17:09:01 - 15274464875 - 395126 - play
+2019-01-10 17:09:01 - 15274464875 - 405347 - play
+2019-01-10 17:45:25 - Thu Jan 10 17:45:25 CST 2019 sendTemplateSMS url = https://app.cloopen.com:8883/2013-12-26/Accounts/8aaf07086812057f016816a6c3880237/SMS/TemplateSMS?sig=81B12159ECCB09BEF351F855A13C91E5
+2019-01-10 17:45:25 - Thu Jan 10 17:45:25 CST 2019 sendTemplateSMS Request body =  {"appId":"8aaf07086812057f016816a6c3da023d","to":"15274464875","templateId":"1","datas":["验证码为849095","2"]}
+2019-01-10 17:45:27 - Thu Jan 10 17:45:27 CST 2019 sendTemplateSMS response body = {"statusCode":"000000","templateSMS":{"smsMessageSid":"059a5a8f47e74d8a9f0b44bccdcdb291","dateCreated":"20190110174527"}}
+2019-01-10 17:46:51 - 15274464875 - 137570 - play
+2019-01-10 17:47:07 - 15274464875 - 137570 - download
+2019-01-10 17:48:18 - No mapping found for HTTP request with URI [/xiami/music/lib/layer/2.4/layer.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:18 - No mapping found for HTTP request with URI [/xiami/music/static/h-ui/js/H-ui.min.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:18 - No mapping found for HTTP request with URI [/xiami/music/lib/My97DatePicker/4.8/WdatePicker.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:18 - No mapping found for HTTP request with URI [/xiami/music/lib/jquery/1.9.1/jquery.min.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:18 - No mapping found for HTTP request with URI [/xiami/music/lib/jquery.validation/1.14.0/jquery.validate.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:18 - No mapping found for HTTP request with URI [/xiami/music/static/h-ui.admin/js/H-ui.admin.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:18 - No mapping found for HTTP request with URI [/xiami/music/lib/jquery.validation/1.14.0/validate-methods.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:18 - No mapping found for HTTP request with URI [/xiami/music/lib/jquery.validation/1.14.0/messages_zh.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:19 - No mapping found for HTTP request with URI [/xiami/music/lib/layer/2.4/layer.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:19 - No mapping found for HTTP request with URI [/xiami/music/static/h-ui/js/H-ui.min.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:19 - No mapping found for HTTP request with URI [/xiami/music/static/h-ui.admin/js/H-ui.admin.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:19 - No mapping found for HTTP request with URI [/xiami/music/lib/My97DatePicker/4.8/WdatePicker.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:19 - No mapping found for HTTP request with URI [/xiami/music/lib/jquery.validation/1.14.0/jquery.validate.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:19 - No mapping found for HTTP request with URI [/xiami/music/lib/jquery.validation/1.14.0/validate-methods.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 17:48:19 - No mapping found for HTTP request with URI [/xiami/music/lib/jquery.validation/1.14.0/messages_zh.js] in DispatcherServlet with name 'dispatcher'
+2019-01-10 18:24:03 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Jan 10 11:07:15 CST 2019]; parent: Root WebApplicationContext
+2019-01-10 18:24:04 - Closing Root WebApplicationContext: startup date [Thu Jan 10 11:07:03 CST 2019]; root of context hierarchy
+2019-01-10 19:16:23 - Root WebApplicationContext: initialization started
+2019-01-10 19:16:23 - Refreshing Root WebApplicationContext: startup date [Thu Jan 10 19:16:23 CST 2019]; root of context hierarchy
+2019-01-10 19:16:24 - Loading XML bean definitions from class path resource [applicationContext.xml]
+2019-01-10 19:16:27 - Loading properties file from class path resource [jdbc.properties]
+2019-01-10 19:16:27 - MLog clients using log4j logging.
+2019-01-10 19:16:27 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2019-01-10 19:16:33 - Root WebApplicationContext: initialization completed in 9943 ms
+2019-01-10 19:16:55 - FrameworkServlet 'dispatcher': initialization started
+2019-01-10 19:16:55 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Jan 10 19:16:55 CST 2019]; parent: Root WebApplicationContext
+2019-01-10 19:16:55 - Loading XML bean definitions from ServletContext resource [/WEB-INF/dipatcher-servlet.xml]
+2019-01-10 19:16:57 - Mapped "{[/admin/createCheckCode]}" onto public void cn.xiami.web.controller.AdminController.createCheckCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2019-01-10 19:16:57 - Mapped "{[/admin/login]}" onto public java.lang.String cn.xiami.web.controller.AdminController.adminLogin(javax.servlet.http.HttpServletRequest)
+2019-01-10 19:16:57 - Mapped "{[/category/toCateList]}" onto public java.lang.String cn.xiami.web.controller.CategoryController.toCateList(org.springframework.ui.Model,int)
+2019-01-10 19:16:57 - Mapped "{[/category/toCreateCinfo]}" onto public java.lang.String cn.xiami.web.controller.CategoryController.toCreateList(org.springframework.ui.Model)
+2019-01-10 19:16:57 - Mapped "{[/cinfo/createCinfo]}" onto public void cn.xiami.web.controller.CinfoController.createCinfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2019-01-10 19:16:57 - Mapped "{[/cinfo/toAddMusic]}" onto public java.lang.String cn.xiami.web.controller.CinfoController.toAddMusic(org.springframework.ui.Model)
+2019-01-10 19:16:57 - Mapped "{[/cinfo/toMusicList]}" onto public java.lang.String cn.xiami.web.controller.CinfoController.toMusicList(int,org.springframework.ui.Model)
+2019-01-10 19:16:57 - Mapped "{[/music/recordMusic]}" onto public void cn.xiami.web.controller.MusicController.record(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/music/collectMusic]}" onto public void cn.xiami.web.controller.MusicController.collectMusic(int,int,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/music/toHistoryMusic]}" onto public java.lang.String cn.xiami.web.controller.MusicController.toHistoryMusic(javax.servlet.http.HttpServletRequest)
+2019-01-10 19:16:57 - Mapped "{[/music/deleteMusic]}" onto public void cn.xiami.web.controller.MusicController.deleteMusic(int,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/music/soldOut]}" onto public void cn.xiami.web.controller.MusicController.soldOut(javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/music/getAllMusic]}" onto public java.lang.String cn.xiami.web.controller.MusicController.getAllMusic(org.springframework.ui.Model)
+2019-01-10 19:16:57 - Mapped "{[/music/addMusic]}" onto public java.lang.String cn.xiami.web.controller.MusicController.addMusic(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/music/delteBatchMusic]}" onto public void cn.xiami.web.controller.MusicController.deleteBatchMusic(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/music/toEditPage]}" onto public java.lang.String cn.xiami.web.controller.MusicController.toEditPage(javax.servlet.http.HttpServletRequest)
+2019-01-10 19:16:57 - Mapped "{[/music/editMusic]}" onto public java.lang.String cn.xiami.web.controller.MusicController.editMusic(javax.servlet.http.HttpServletRequest)
+2019-01-10 19:16:57 - Mapped "{[/music/musicDownload]}" onto public void cn.xiami.web.controller.MusicController.MusicDownload(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/user/register]}" onto public java.lang.String cn.xiami.web.controller.UserController.register(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpSession)
+2019-01-10 19:16:57 - Mapped "{[/user/logOut]}" onto public java.lang.String cn.xiami.web.controller.UserController.logOut(javax.servlet.http.HttpSession)
+2019-01-10 19:16:57 - Mapped "{[/user/login]}" onto public void cn.xiami.web.controller.UserController.login(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/user/updateSessionUser]}" onto public java.lang.String cn.xiami.web.controller.UserController.updateSesssionUser(javax.servlet.http.HttpSession)
+2019-01-10 19:16:57 - Mapped "{[/user/judgeNumber]}" onto public void cn.xiami.web.controller.UserController.judgeUserNumber(java.lang.String,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/user/updateUser]}" onto public java.lang.String cn.xiami.web.controller.UserController.updateUser(javax.servlet.http.HttpServletRequest)
+2019-01-10 19:16:57 - Mapped "{[/user/registerNext]}" onto public void cn.xiami.web.controller.UserController.registerNext(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Mapped "{[/user/sendCode]}" onto public void cn.xiami.web.controller.UserController.sendCode(java.lang.String,javax.servlet.http.HttpSession,javax.servlet.http.HttpServletResponse)
+2019-01-10 19:16:57 - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Jan 10 19:16:55 CST 2019]; parent: Root WebApplicationContext
+2019-01-10 19:16:58 - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Thu Jan 10 19:16:55 CST 2019]; parent: Root WebApplicationContext
+2019-01-10 19:16:58 - Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2019-01-10 19:16:58 - Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2019-01-10 19:16:58 - Mapped URL path [/image/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+2019-01-10 19:16:58 - Mapped URL path [/admin/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+2019-01-10 19:16:59 - FrameworkServlet 'dispatcher': initialization completed in 3780 ms
+2019-01-10 19:30:44 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgf56pa0fe5fxpr70gfc|1984a209, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgf56pa0fe5fxpr70gfc|1984a209, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://192.168.43.125:3306/xiami, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 10, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]

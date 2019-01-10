@@ -154,7 +154,7 @@
                                 <input type="hidden" class="imgHref" value="${cinfo.imgHref}">
                                 <p class="a-name">${beans.album}</p>
                                 <p class="dowload">
-                                    <a href="<c:url value='/music/musicDownload?mp3Url=${beans.mp3}&name=${beans.name}'/>"><i class="fa fa-download"></i></a> /
+                                    <a href="<c:url value='/music/musicDownload?mp3Url=${beans.mp3}&name=${beans.name}&phoneNumber=${sessionScope.user.phoneNumber}&musicId=${beans.id}'/>"><i class="fa fa-download"></i></a> /
                                     <span style="cursor: pointer;">收藏</span>
                                 <div class="collect" style="display: none;">
                                 <c:forEach items="${sessionScope.user.cinfos}" var="cinfo">

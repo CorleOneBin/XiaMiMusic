@@ -6,6 +6,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +31,17 @@ public class MusicController {
     /**
      * 下载歌曲
      */
+    private static Logger logger1 = Logger.getLogger(MusicController.class);
+
     @RequestMapping(value = "/music/musicDownload")
     public void MusicDownload(HttpServletRequest req, HttpServletResponse resp){
+
         String mp3Href =  req.getParameter("mp3Url");
         String name =  req.getParameter("name");
+        String phoneNumber = req.getParameter("phoneNumber");
+        int musicId = Integer.parseInt(req.getParameter("musicId"));
+
+        logger1.info(phoneNumber+" - "+musicId+" - "+"download");
 
         resp.setContentType("application/octet-stream");
         resp.setHeader("Content-Disposition", "attachment;filename=" + name+".mp3");
@@ -232,13 +240,16 @@ public class MusicController {
      * 记录用户访问的音乐
      *
      */
+
     @RequestMapping(value = "/music/recordMusic")
     public void record(HttpServletRequest req,HttpServletResponse resp){
         String phoneNumber =  req.getParameter("phoneNumber");
         int musicId = Integer.parseInt(req.getParameter("musicId"));
 
-        System.out.println(phoneNumber+"----"+musicId);
+        //记录成为日志文件
+        logger1.info(phoneNumber+" - "+musicId+" - "+"play");
 
+        //插入到数据库
         ms.insertUserToMusic(phoneNumber,musicId);
 
         try {
@@ -249,10 +260,11 @@ public class MusicController {
 
     }
 
+    /**
+     * 转入historyMusic
+     */
     @RequestMapping(value = "/music/toHistoryMusic")
     public String toHistoryMusic(HttpServletRequest req){
-
-        System.out.println("123123");
 
         String phoneNumber = req.getParameter("phoneNumber");
         List<Music> list =  ms.selectHistoryMusicByNumber(phoneNumber);
